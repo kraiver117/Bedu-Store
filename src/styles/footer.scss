@@ -1,0 +1,73 @@
+$primary-color: #000000;
+$secondary-color: #FF5F29;
+$textWhite: #FFF;
+
+.footer-page {
+    background-color: $secondary-color;
+    padding: 40px;
+    color: $textWhite !important;
+
+    .footer-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px 0px;
+        
+        .footer-box-title {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 33px;
+        }
+        @media (max-width: 768px) {
+            .footer-box-title {
+                font-size: 24px;
+            }
+        }
+        ul {
+            list-style: none;
+            padding-top: 4px;
+            padding-left: 0;
+        }
+        ul li {
+            padding: 3px 0px;
+        }
+        ul li a {
+            text-decoration: none;
+            color: $textWhite;
+            font-weight: 500;
+            font-size: 22px;
+            transition: 0.3s;
+        }
+        @media (max-width: 768px) {
+            ul li a {
+                font-size: 18px;
+            }
+        }
+        ul li a:hover {
+            color: $primary-color;
+        }
+        .social-networks-icon {
+            width: 39px;
+            height: 41px;
+        }
+        @media (max-width: 768px) {
+            .social-networks-icon {
+                width: 30px;
+                height: 34px;
+            }
+        }
+        .bedu-store-text {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 25px;            
+            letter-spacing: 2px;
+        }
+    }
+    .footer-copyright {
+        text-align: center;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+    }
+}
