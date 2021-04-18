@@ -36,12 +36,13 @@ export const Header = () => {
                     <NavDropdown 
                                 title={
                                     <img
-                                        alt=""
-                                        src="/profile.png"
-                                        width="30"
-                                        height="30"
+                                    alt=""
+                                    src="/profile.png"
+                                    width="30"
+                                    height="30"
                                     />
                                 } 
+                                alignRight
                                 id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Iniciar sesión</NavDropdown.Item>
