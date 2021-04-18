@@ -1,10 +1,11 @@
 import React from 'react';
-import '../../styles/form.scss';
+import { Link } from 'react-router-dom';
 import {
     Container,
     Form,
     Button
 } from 'react-bootstrap';
+import '../../styles/form.scss';
 
 export const Login = () => {
     return (
@@ -27,7 +28,11 @@ export const Login = () => {
                     </Button>
                 </Form.Group>
                 <div className="text-center my-4 password-forgotten">
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    ¿No tienes cuenta?
+                    <Link to="/register"> Registrate</Link>
+                </div>
+                <div className="text-center my-4 password-forgotten">
+                    <Link to="/forgotPassword">¿Olvidaste tu contraseña?</Link>
                 </div>
             </Form>
         </Container>
