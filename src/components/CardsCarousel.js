@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/cardsCarousel.scss';
 
-export const CardsCarousel = () => {
+export const CardsCarousel = ({ title = 'Productos'}) => {
     const { width } = useWindowDimensions();
 
     const settings = {
@@ -23,6 +23,7 @@ export const CardsCarousel = () => {
     
     return (
         <Container className='my-5'>
+                <h3 className="text-center">{ title }</h3>
                 <Slider {...settings}>
                     {
                         products.map( (product, index) => (
