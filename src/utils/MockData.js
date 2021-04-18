@@ -34,7 +34,7 @@ const products = [
         image: '/images/mochilaDAExpert.png',
         description:
             'Para los mejores analizadores de datos.',
-        price: 300.00,
+        price: 299.99,
         countInStock: 10,
         rating: 4.5,
         numReviews: 12,
