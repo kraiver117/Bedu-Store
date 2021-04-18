@@ -17,21 +17,21 @@ export const MainCarousel = () => {
                 <img
                     className="d-block w-100"
                     src={Banner1}
-                    alt="First slide"
+                    alt="First banner"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
                     src={Banner2}
-                    alt="Second slide"
+                    alt="Second banner"
                 />
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
                     src={Banner3}
-                    alt="Third slide"
+                    alt="Third banner"
                 />
             </Carousel.Item>
         </Carousel>

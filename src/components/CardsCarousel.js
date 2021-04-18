@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/cardsCarousel.scss';
 
-export const CardsCarousel = ({ title = 'Productos'}) => {
+export const CardsCarousel = ({ title = 'Productos' }) => {
     const { width } = useWindowDimensions();
 
     const settings = {
