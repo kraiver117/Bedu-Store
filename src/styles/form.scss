@@ -13,12 +13,11 @@
     }
     
     .password-forgotten a {
-        color: $primary-color;
+        color: $secondary-color;
         transition: 0.3s;
     }
 
     .password-forgotten a:hover {
-        text-decoration: none;
-        color: $secondary-color;
+        text-decoration: underline;
     }
 }
