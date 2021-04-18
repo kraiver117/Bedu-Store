@@ -4,4 +4,4 @@ Nuestro proyecto se basa en el dise√±o y desarrollo de un e-commerce con la tem√
 
 ## Demo
 
-Para visualizar nuestro proyecto ingresa a [https://bedu-store.netlify.app/]
+Para visualizar nuestro proyecto ingresa a https://bedu-store.netlify.app/
