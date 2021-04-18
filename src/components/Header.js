@@ -44,8 +44,26 @@ export const Header = () => {
                                 } 
                                 alignRight
                                 id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Iniciar sesión</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.1" className="d-flex justify-content-start align-items-center">
+                            <img
+                                alt=""
+                                src="/home.png"
+                                width="30"
+                                height="30"
+                                className="navbar-icon"
+                            />
+                                Home
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2" className="d-flex justify-content-start align-items-center">
+                            <img
+                                alt=""
+                                src="/person.png"
+                                width="30"
+                                height="30"
+                                className="navbar-icon"
+                            />
+                                Iniciar sesión
+                            </NavDropdown.Item>
                     </NavDropdown>
                     </div>
                     
