@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout } from '../components/Layout';
+import { Layout } from '../hoc/Layout/Layout.js';
 import { Home } from '../views/Home/Home';
 import { Login } from '../views/Login/Login';
 import { Register } from '../views/Register/Register';
