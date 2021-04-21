@@ -17,13 +17,13 @@ export const SocialMedia = () => {
                     <h4 className='text-white pb-4'>Visita nuestra redes</h4>
                     <div className='d-flex justify-content-around w-100 pr-5 pl-5'>
                         <a href='https://www.facebook.com/BeduOrg' target="_blank" rel="noreferrer">
-                            <i class="bi bi-facebook socialMediaLogo text-white"></i>
+                            <i className="bi bi-facebook socialMediaLogo text-white"></i>
                         </a>
                         <a href="https://www.instagram.com/bedu_org/" target="_blank" rel="noreferrer">
-                            <i class="bi bi-instagram socialMediaLogo text-white"></i>
+                            <i className="bi bi-instagram socialMediaLogo text-white"></i>
                         </a>
                         <a href="https://www.linkedin.com/school/beduorg/mycompany/" target="_blank" rel="noreferrer">
-                            <i class="bi bi-linkedin socialMediaLogo text-white"></i>
+                            <i className="bi bi-linkedin socialMediaLogo text-white"></i>
                         </a>
                     </div>
                 </Col>

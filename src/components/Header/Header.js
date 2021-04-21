@@ -62,13 +62,13 @@ export const Header = () => {
                         >
                             <NavDropdown.Item className="d-flex justify-content-start align-items-center">
                                 <Link className="text-dark text-decoration-none" to='/'>
-                                <i class="bi bi-house-door mr-3"></i>
+                                <i className="bi bi-house-door mr-3"></i>
                                     Home
                                 </Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item  className="d-flex justify-content-start align-items-center">
                                 <Link className="text-dark text-decoration-none" to='/login'>
-                                    <i class="bi bi-person mr-3"></i>
+                                    <i className="bi bi-person mr-3"></i>
                                     Iniciar sesión
                                 </Link>
                             </NavDropdown.Item>
