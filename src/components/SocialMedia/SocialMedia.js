@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import BeduLogo from '../assets/BeduLogoSmall.png';
-import '../styles/socialMedia.scss';
+import BeduLogo from '../../assets/images/BeduLogoSmall.png';
+import './SocialMedia.scss';
 
 export const SocialMedia = () => {
     return (

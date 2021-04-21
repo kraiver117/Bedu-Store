@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import useWindowDimensions from '../hooks/useWindowDimensions';
-import { ProductCard } from './ProductCard';
-import products from '../utils/MockData';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { ProductCard } from '../ProductCard/ProductCard';
+import products from '../../utils/MockData';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../styles/cardsCarousel.scss';
+import './CardsCarousel.scss';
 
 export const CardsCarousel = ({ title = 'Productos' }) => {
     const { width } = useWindowDimensions();

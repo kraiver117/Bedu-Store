@@ -2,6 +2,11 @@ import React from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
+
+import SearchIcon from '../../assets/images/SearchIcon.png';
+import ShoppingCartIcon from '../../assets/images/ShoppingCartIcon.png';
+import Profile from '../../assets/images/Profile.png';
+
 import './Header.scss';
 
 export const Header = () => {
@@ -30,15 +35,15 @@ export const Header = () => {
                     </Nav>
                     <div className="navbar-right d-flex justify-content-around align-items-center">
                         <img
-                            alt=""
-                            src="/SearchIcon.png"
+                            alt="searchIcon"
+                            src={SearchIcon}
                             width="30"
                             height="30"
                             className="navbar-icon"
                         />
                         <img
-                            alt=""
-                            src="/ShoppingCartIcon.png"
+                            alt="shoppingCart"
+                            src={ShoppingCartIcon}
                             width="30"
                             height="35"
                             className="navbar-icon"
@@ -47,7 +52,7 @@ export const Header = () => {
                             title={
                                 <img
                                 alt=""
-                                src="/profile.png"
+                                src={Profile}
                                 width="30"
                                 height="30"
                                 />
@@ -57,25 +62,13 @@ export const Header = () => {
                         >
                             <NavDropdown.Item className="d-flex justify-content-start align-items-center">
                                 <Link className="text-dark text-decoration-none" to='/'>
-                                    <img
-                                        alt=""
-                                        src="/home.png"
-                                        width="30"
-                                        height="30"
-                                        className="navbar-icon"
-                                    />
+                                <i class="bi bi-house-door mr-3"></i>
                                     Home
                                 </Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item  className="d-flex justify-content-start align-items-center">
                                 <Link className="text-dark text-decoration-none" to='/login'>
-                                    <img
-                                        alt=""
-                                        src="/person.png"
-                                        width="30"
-                                        height="30"
-                                        className="navbar-icon"
-                                    />
+                                    <i class="bi bi-person mr-3"></i>
                                     Iniciar sesión
                                 </Link>
                             </NavDropdown.Item>

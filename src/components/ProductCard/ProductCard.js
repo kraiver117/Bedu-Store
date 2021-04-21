@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import './ProductCard.scss';
 
 export const ProductCard = ({ product }) => {
     return (
