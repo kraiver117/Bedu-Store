@@ -8,7 +8,7 @@ import {
 
 export const Footer = () => {
     return (
-        <footer className="footer-page">
+        <footer className="footer-page mt-5">
             <Container>
                 <Row xs={1} sm={2} md={3} lg={4}>
                     <Col className="footer-box">

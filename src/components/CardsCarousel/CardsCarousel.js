@@ -18,7 +18,7 @@ export const CardsCarousel = ({ title = 'Productos' }) => {
         infinite: true,
         centerPadding: (width > 700 ? '230px' : width > 500 ? '180px' : width > 400 ? '280px' : width < 281 ? '100px' : '200px'),
         slidesToShow: (width > 500 ? 2 : 1),
-        slidesToScroll: 2
+        slidesToScroll: 1
     }
     
     return (
