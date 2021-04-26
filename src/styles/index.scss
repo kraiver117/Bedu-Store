@@ -15,3 +15,11 @@ code {
 .secondary-color {
   color: #FF5F29;
 }
+
+.dropdown-item.active {
+  background-color: #FF5F29;
+}
+
+.dropdown-item:active {
+  background-color: #FF5F29;
+}
