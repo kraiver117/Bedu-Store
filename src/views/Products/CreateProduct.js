@@ -31,7 +31,7 @@ export const CreateProduct = ({ history }) => {
         } else if (errorCreate) {
             dispatch({ type: PRODUCT_CREATE_RESET });
         }
-    }, [dispatch, successCreate, history]);
+    }, [dispatch, successCreate, errorCreate, history]);
 
     const handleCreateProduct = (e) => {
         e.preventDefault();
