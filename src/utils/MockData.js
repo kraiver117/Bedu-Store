@@ -1,15 +1,17 @@
 const products = [
     {
+        _id: '5faf866af74d3104bc3ce130',
         name: 'Playera Bedu',
         image: '/images/playeraBedu.png',
         description:
-            'Player de algodon con el logo de Bedu.',
+            'Playera de algodón con el logo de Bedu.',
         price: 99.99,
         countInStock: 10,
         rating: 4.5,
         numReviews: 12,
     },
     {
+        _id: '5faf866af74d3104bc3ce128',
         name: 'Mochila Bedu',
         image: '/images/mochilaBedu.png',
         description:
@@ -20,6 +22,7 @@ const products = [
         numReviews: 12,
     },
     {
+        _id: '5faf866af74d3104bc3ce126',
         name: 'Taza Full Stack Javascript',
         image: '/images/tazaFSJavascript.png',
         description:
@@ -30,6 +33,7 @@ const products = [
         numReviews: 12,
     },
     {
+        _id: '5faf866af74d3104bc3ce135',
         name: 'Mochila Data Analysis expert',
         image: '/images/mochilaDAExpert.png',
         description:

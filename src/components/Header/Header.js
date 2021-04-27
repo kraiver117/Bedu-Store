@@ -1,15 +1,31 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
-
-import SearchIcon from '../../assets/images/SearchIcon.png';
-import ShoppingCartIcon from '../../assets/images/ShoppingCartIcon.png';
-import Profile from '../../assets/images/Profile.png';
-
+import { FaShoppingCart } from 'react-icons/fa';
+import { 
+    BsSearch, 
+    BsPeopleCircle, 
+    BsPersonFill, 
+    BsHouseDoorFill, 
+    BsPeopleFill, 
+    BsBoxArrowRight, 
+    BsReverseLayoutTextSidebarReverse, 
+    BsInboxFill 
+} from 'react-icons/bs';
+import { logout } from '../../actions/userActions';
 import './Header.scss';
 
 export const Header = () => {
+    const dispatch = useDispatch();
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
+    const logoutHandler = () => {
+        dispatch(logout());
+    }
+
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -34,44 +50,69 @@ export const Header = () => {
                         </LinkContainer>
                     </Nav>
                     <div className="navbar-right d-flex justify-content-around align-items-center">
-                        <img
-                            alt="searchIcon"
-                            src={SearchIcon}
-                            width="30"
-                            height="30"
-                            className="navbar-icon"
-                        />
-                        <img
-                            alt="shoppingCart"
-                            src={ShoppingCartIcon}
-                            width="30"
-                            height="35"
-                            className="navbar-icon"
-                        />
-                        <NavDropdown 
-                            title={
-                                <img
-                                alt=""
-                                src={Profile}
-                                width="30"
-                                height="30"
-                                />
-                            } 
-                            alignRight
-                            id="basic-nav-dropdown"
-                        >
-                            <NavDropdown.Item className="d-flex justify-content-start align-items-center">
-                                <Link className="text-dark text-decoration-none" to='/'>
-                                <i className="bi bi-house-door mr-3"></i>
-                                    Home
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item  className="d-flex justify-content-start align-items-center">
-                                <Link className="text-dark text-decoration-none" to='/login'>
-                                    <i className="bi bi-person mr-3"></i>
-                                    Iniciar sesión
-                                </Link>
-                            </NavDropdown.Item>
+                        <BsSearch />
+                        <FaShoppingCart  className="mx-4" />
+                        <NavDropdown id="user-dropdown" title={userInfo ? userInfo.fullName : <BsPeopleCircle />} alignRight>
+                            {
+                                userInfo 
+                                    ?   <>
+                                            <LinkContainer exact to='/'>
+                                                <NavDropdown.Item>
+                                                    <BsHouseDoorFill className="mr-3" />
+                                                    Home
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to='/profile'>
+                                                <NavDropdown.Item>
+                                                    <BsPersonFill className="mr-3" />
+                                                    Perfil
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                                {
+                                                    userInfo.role === "admin" 
+                                                        &&   <>
+                                                                <NavDropdown.Divider />
+                                                                <LinkContainer to='/users'>
+                                                                    <NavDropdown.Item>
+                                                                            <BsPeopleFill className="mr-3" />
+                                                                            Usuarios
+                                                                    </NavDropdown.Item>
+                                                                </LinkContainer>
+                                                                <LinkContainer to='/admin/productlist'>
+                                                                    <NavDropdown.Item>
+                                                                        <BsInboxFill className="mr-3" />
+                                                                        Productos
+                                                                    </NavDropdown.Item>
+                                                                </LinkContainer>
+                                                                <LinkContainer to='/orders'>
+                                                                    <NavDropdown.Item>
+                                                                        <BsReverseLayoutTextSidebarReverse className="mr-3" />
+                                                                        Pedidos
+                                                                    </NavDropdown.Item>
+                                                                </LinkContainer>
+                                                            </>
+                                                }
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item className="d-flex justify-content-start align-items-center" onClick={logoutHandler}>
+                                                <BsBoxArrowRight className="mr-3" />
+                                                Cerrar sesión
+                                            </NavDropdown.Item>
+                                        </>
+                                    :   <>
+                                            <LinkContainer exact to='/'>
+                                                <NavDropdown.Item>
+                                                    <BsHouseDoorFill className="mr-3" />
+                                                    Home
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to='/login'>
+                                                <NavDropdown.Item  className="d-flex justify-content-start align-items-center">
+                                                    <BsPersonFill className="mr-3" />
+                                                    Iniciar sesión
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                        </>
+                            }
                         </NavDropdown>
                     </div>
                 </Navbar.Collapse>
