@@ -21,9 +21,8 @@ export const CreateProduct = ({ history }) => {
     const dispatch = useDispatch();
 
     const productCreate = useSelector(state => state.productCreate);
-    console.log(productCreate);
-    const { loading: loadingCreate, error: errorCreate, success: successCreate } = productCreate;
 
+    const { loading: loadingCreate, error: errorCreate, success: successCreate } = productCreate;
 
     useEffect(() => {
         if (successCreate) {
@@ -68,7 +67,6 @@ export const CreateProduct = ({ history }) => {
             setUploading(false);
 
         } catch (error) {
-            console.log(error);
             setUploading(false);
         }
     }

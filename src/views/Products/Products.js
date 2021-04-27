@@ -25,11 +25,6 @@ export const Products = () => {
         dispatch(listProducts('', 1));
     }, [dispatch, successDelete]);
 
-
-    const createProductHandler = () => {
-        console.log("Product Created");
-    }
-
     const deleteProductHandler = (id) => {
         if (window.confirm('¿Deseas eliminar el producto?')) {
             dispatch(deleteProduct(id))
@@ -44,7 +39,7 @@ export const Products = () => {
                 </Col>
                 <Col className='text-right'>
                     <LinkContainer to='createproduct'>
-                        <Button className='btn-orange my-3' onClick={createProductHandler}>
+                        <Button className='btn-orange my-3'>
                             <FaPlus /> Crear producto
                         </Button>
                     </LinkContainer>

@@ -28,8 +28,6 @@ export const UpdateProduct = ({ match, history }) => {
     const productUpdate = useSelector(state => state.productUpdate);
     const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = productUpdate;
 
-    console.log(product);
-
     useEffect(() => {
         if (successUpdate) {
             dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -69,7 +67,6 @@ export const UpdateProduct = ({ match, history }) => {
             setUploading(false);
 
         } catch (error) {
-            console.log(error);
             setUploading(false);
         }
     }
