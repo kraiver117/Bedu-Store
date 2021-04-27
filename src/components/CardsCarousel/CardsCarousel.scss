@@ -2,3 +2,17 @@
 .slick-next:before {
     color: #FF5F29;
 }
+
+.carousel-container {
+    @media (max-width: 960px) {
+        zoom: 0.70;
+    }
+
+    @media (max-width: 600px) {
+        zoom: 0.50;
+    }
+
+    @media (max-width: 300px) {
+        zoom: 0.40;
+    }
+}

@@ -22,7 +22,7 @@ export const CardsCarousel = ({ title = 'Productos' }) => {
     }
     
     return (
-        <Container className='my-5'>
+        <Container className='carousel-container my-5'>
                 <h3 className="text-center">{ title }</h3>
                 <Slider {...settings}>
                     {
