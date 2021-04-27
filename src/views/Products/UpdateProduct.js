@@ -6,10 +6,10 @@ import { FormContainer } from '../../components/FormContainer/FormContainer';
 import { Loader } from '../../components/Loader/Loader';
 import { listProductDetails, updateProduct } from '../../actions/productActions';
 import { Message } from '../../components/Alert/Alert';
-import { PRODUCT_UPDATE_RESET } from '../../constants/productConstants';
+import { PRODUCT_DETAILS_RESET, PRODUCT_UPDATE_RESET } from '../../constants/productConstants';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 
-export const ProductEditScreen = ({ match, history }) => {
+export const UpdateProduct = ({ match, history }) => {
     const productId = match.params.id;
 
     const [name, setName] = useState('');
@@ -28,9 +28,12 @@ export const ProductEditScreen = ({ match, history }) => {
     const productUpdate = useSelector(state => state.productUpdate);
     const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = productUpdate;
 
+    console.log(product);
+
     useEffect(() => {
         if (successUpdate) {
             dispatch({ type: PRODUCT_UPDATE_RESET });
+            dispatch({ type: PRODUCT_DETAILS_RESET });
             history.push('/admin/productlist');
         } else {
             if(!product.name || product._id !== productId) {
@@ -71,7 +74,7 @@ export const ProductEditScreen = ({ match, history }) => {
         }
     }
 
-    const submitHandler = (e) => {
+    const updateProductHandler = (e) => {
         e.preventDefault();
 
         dispatch(updateProduct({
@@ -86,7 +89,7 @@ export const ProductEditScreen = ({ match, history }) => {
     }
 
     return (
-        <Container>
+        <Container className='mb-5'>
             <Link to='/admin/productlist' className='btn btn-light my-3'>
                 Regresar
             </Link>
@@ -95,7 +98,7 @@ export const ProductEditScreen = ({ match, history }) => {
                 { loadingUpdate && <Loader /> }
                 { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }
                 { loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> : (
-                    <Form onSubmit={submitHandler}>
+                    <Form onSubmit={updateProductHandler}>
                         <Form.Group controlId='name'>
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control
@@ -131,7 +134,7 @@ export const ProductEditScreen = ({ match, history }) => {
                                 {uploading && <Loader />}
                             </Form.File>
                         </Form.Group>
-                        <Form.Group controlId='countInStock'>
+                        <Form.Group controlId='inStock'>
                             <Form.Label>Cantidad disponible</Form.Label>
                             <Form.Control
                                 type='number'
@@ -158,8 +161,8 @@ export const ProductEditScreen = ({ match, history }) => {
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </Form.Group>
-                        <Button type='submit' className='text-white'>
-                            Actualizar
+                        <Button type='submit' className='btn-orange'>
+                            Actualizar Producto
                         </Button>
                     </Form>
                 )}

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button, Table, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { BsTrashFill } from 'react-icons/bs';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaPlus } from 'react-icons/fa';
 import { listProducts, deleteProduct } from '../../actions/productActions';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
@@ -40,12 +40,14 @@ export const Products = () => {
         <Container>
             <Row className="align-items-center">
                 <Col>
-                    <h1>Productos</h1>
+                    <h3>Productos</h3>
                 </Col>
                 <Col className='text-right'>
-                    <Button className='my-3' onClick={createProductHandler}>
-                        <i className='fas fa-plus'></i> Create Product
-                    </Button>
+                    <LinkContainer to='createproduct'>
+                        <Button className='btn-orange my-3' onClick={createProductHandler}>
+                            <FaPlus /> Crear producto
+                        </Button>
+                    </LinkContainer>
                 </Col>
             </Row>
             {loadingDelete && <Loader />}
@@ -73,9 +75,9 @@ export const Products = () => {
                                             <td>${product.price}</td>
                                             <td>{product.category}</td>
                                             <td>{product.brand}</td>
-                                            <td>
+                                            <td className='d-flex'>
                                                 <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                                                    <Button variant='light' className='btn-sm'>
+                                                    <Button variant='light' className='btn-sm mr-2'>
                                                         <FaEdit />
                                                     </Button>
                                                 </LinkContainer>
