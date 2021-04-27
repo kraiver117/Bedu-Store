@@ -6,6 +6,9 @@ import {
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DETAILS_REQUEST,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_CREATE_FAIL,
+    PRODUCT_CREATE_REQUEST,
     PRODUCT_UPDATE_SUCCESS,
     PRODUCT_UPDATE_FAIL,
     PRODUCT_UPDATE_REQUEST,
@@ -62,6 +65,36 @@ export const listProductDetails = (id) => async (dispatch) => {
     }
 }
 
+export const createProduct = (product) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_CREATE_REQUEST
+        });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        await beduStoreAPI.post(`/products`, product, config);
+
+        dispatch({
+            type: PRODUCT_CREATE_SUCCESS
+        });
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_CREATE_FAIL,
+            payload: error.response && error.response.data.error
+                ? error.response.data.error
+                : error.message
+        });
+    }
+}
+
 export const updateProduct = (product) => async (dispatch, getState) => {
     try {
         dispatch({
@@ -100,7 +133,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
             type: PRODUCT_DELETE_REQUEST
         });
 
-        const { userLogin: { userInfo } } =getState();
+        const { userLogin: { userInfo } } = getState();
 
         const config = {
             headers: {
@@ -111,7 +144,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         await beduStoreAPI.delete(`/products/${id}`, config);
 
         dispatch({
-            type: PRODUCT_DELETE_SUCCESS,
+            type: PRODUCT_DELETE_SUCCESS
         });
 
     } catch (error) {
