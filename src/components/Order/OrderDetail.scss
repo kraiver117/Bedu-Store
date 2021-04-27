@@ -1,18 +1,12 @@
-$secondary-color: #FF5F29;
-
-.makeorder-container {
+.detailOrder-container {
    
-   .makeorder-checkout {
+   .detailOrder-checkout {
       border: 1px solid #4A4343;
       padding: 15px;
+      height: 330px;
    }
 
-   .btn-checkout {
-      background-color: $secondary-color;
-      border: none;
-   }
-
-   .makeorder-products {
+   .detailOrder-products {
       width: 100%;
       img {
          width: 54px;

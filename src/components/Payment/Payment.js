@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './Payment.scss'
 
 export const Payment = () => {
@@ -16,9 +17,11 @@ export const Payment = () => {
                />
             </Form.Group>
             <Form.Group className="text-left">
+            <Link to="/makeorder">
                     <Button type="submit" className="button-orange mt-4">
                         Siguiente
                     </Button>
+            </Link>
                 </Form.Group>
          </Form>
       </Container>

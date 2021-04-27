@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 import './MakeOrder.scss';
 
@@ -30,7 +31,11 @@ export const MakeOrder = () => {
                      <p>Envio  <span>$50</span></p>
                      <hr/>
                      <p>Productos  <span>$170</span></p>
-                     <button className="btn btn-primary"> Realizar pedido </button>
+                     <Link to="/order-detail">
+                        <Button className="btn-checkout" block>
+                        Siguiente
+                        </Button>
+                     </Link>
                   </div>
                </div>
             </div>

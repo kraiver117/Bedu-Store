@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export const Address = () => {
    return (
@@ -22,9 +23,11 @@ export const Address = () => {
                     <Form.Control type="password" />
                 </Form.Group>
                 <Form.Group className="text-right">
+                <Link to="/payment">
                     <Button type="submit" className="button-orange mt-4">
-                        Registrarse
+                    Siguiente
                     </Button>
+                </Link>
                 </Form.Group>
             </Form>
         </Container>
