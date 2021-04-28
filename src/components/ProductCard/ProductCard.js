@@ -9,7 +9,7 @@ export const ProductCard = ({ product }) => {
     return (
         <Card className='my-3 mx-2 p-2 rounded'>
             <Card.Header>
-                <Link to={`/product/${1}`}>
+                <Link to={`/product/${product._id}`}>
                     <Card.Img src={product.image} variant='top' className="bg-black-gradient p-1"/>
                 </Link>
             </Card.Header>
@@ -34,8 +34,8 @@ export const ProductCard = ({ product }) => {
                         COMPRAR
                     </Card.Link>
                 </LinkContainer>
-                <LinkContainer to=''>
-                    <Card.Link className='secondary-color font-weight-bold'>
+                <LinkContainer to={`/product/${product._id}`}>
+                    <Card.Link className='secondary-color font-weight-bold' >
                         VER
                     </Card.Link>
                 </LinkContainer>
