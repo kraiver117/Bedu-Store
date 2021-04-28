@@ -11,7 +11,7 @@ export const Loader = () => {
                 color: '#FF5F29',
                 position: 'fixed',
                 margin: 'auto',
-                top: '-35%',
+                top: '-15%',
                 bottom: '0',
                 right: '0',
                 left: '0',

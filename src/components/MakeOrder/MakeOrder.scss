@@ -1,0 +1,26 @@
+$secondary-color: #FF5F29;
+
+.makeorder-container {
+   
+   .makeorder-checkout {
+      border: 1px solid #4A4343;
+      padding: 15px;
+   }
+
+   .btn-checkout {
+      background-color: $secondary-color;
+      border: none;
+   }
+
+   .makeorder-products {
+      width: 100%;
+      img {
+         width: 54px;
+         height: 49px;
+      }
+
+      .total {
+         margin-left: 8rem;
+      }
+   }
+}

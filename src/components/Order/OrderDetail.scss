@@ -1,0 +1,20 @@
+.detailOrder-container {
+   
+   .detailOrder-checkout {
+      border: 1px solid #4A4343;
+      padding: 15px;
+      height: 330px;
+   }
+
+   .detailOrder-products {
+      width: 100%;
+      img {
+         width: 54px;
+         height: 49px;
+      }
+
+      .total {
+         margin-left: 8rem;
+      }
+   }
+}
