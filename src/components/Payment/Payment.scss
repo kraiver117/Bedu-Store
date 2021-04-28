@@ -1,0 +1,11 @@
+$secondary-color: #FF5F29;
+.form-payment {
+   max-width: 640px;
+   margin: 100px 0;
+
+
+   .button-orange {
+      background-color: $secondary-color;
+      border-color: $secondary-color;
+   }
+}
