@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
     Container,
@@ -10,7 +11,7 @@ import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
 import '../../styles/form.scss';
 
-export const UserUpdate = () => {
+export const UpdateUser = ({history}) => {
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
     const [fullName, setFullName] = useState('');
@@ -19,11 +20,13 @@ export const UserUpdate = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
     // Get User
     const getUser = async () => {
         try {
           setLoading(true);
-          beduStoreAPI.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+          beduStoreAPI.defaults.headers.common['Authorization'] = `Bearer ${userInfo.token}`;
           beduStoreAPI
             .get('/users/' + id )
             .then((response) => {
@@ -36,20 +39,22 @@ export const UserUpdate = () => {
             .catch((error) => {
               setError(error.response.data.error);
               setLoading(false);
-              console.log(error);
             });
         } catch (e) {
-          console.log(e);
+            setError(error.response.data.error);
         }
       };
-  React.useEffect(() => {
-    getUser();
-  }, []);
+    useEffect(() => {
+        if(!userInfo.role === "admin") {
+            history.push('/');
+        }
+        getUser();
+    }, []);
 
     const updtadeUserHandler = (e) => {
         e.preventDefault();
         setLoading(true);
-        beduStoreAPI.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+        beduStoreAPI.defaults.headers.common['Authorization'] = `Bearer ${userInfo.token}`;
         beduStoreAPI.put(`/users/${id}`, { fullName, email, role })
             .then( response => {
                 getUser();

@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
     Container,
@@ -6,11 +7,12 @@ import {
     Button
 } from 'react-bootstrap';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
+import { login } from '../../actions/userActions';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
 import '../../styles/form.scss';
 
-export const Register = ( {history} ) => {
+export const Register = ( {history, location} ) => {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -18,17 +20,28 @@ export const Register = ( {history} ) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    
+    const dispatch = useDispatch();
+    const redirect = location.search ? location.search.split('=')[1] : '/';
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
+    useEffect(() => {
+        if (userInfo) {
+            history.push(redirect);
+        }
+    }, [history, userInfo, redirect]);
 
     const registerHandler = (e) => {
         e.preventDefault();
         setLoading(true);
-        console.log(`${name} ${lastName}, ${email}, ${password}`)
-        const fullName = `${name}  ${lastName}`;
+        const fullName = `${name} ${lastName}`;
         beduStoreAPI.post('/auth/register', { fullName, email, password })
             .then( response => {
                 localStorage.setItem('token', `Bearer ${response.data.token}`);
                 setSuccess("Te has registrado éxitosamente");
                 setLoading(false);
+                dispatch(login(email, password));
                 history.push("/");
             })
             .catch( error => {

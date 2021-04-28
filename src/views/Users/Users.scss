@@ -2,7 +2,11 @@
 @import "../../styles/_vars.scss";
 
 .container-table {
-    margin: 100px auto;
+    margin: 50px auto;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dee2e6 !important;
 }
 
 .btn-orange {
@@ -26,8 +30,4 @@
 .users-table {
     min-height: 370px;
     width: 100%
-}
-
-.fas .fa-chevron-left ::before {
-    content: '<';
 }

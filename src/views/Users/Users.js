@@ -1,46 +1,56 @@
-import React, { useState } from 'react';
-import { Container, Table, Modal, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Container, Modal, Button } from 'react-bootstrap';
 import { MDBDataTableV5 } from 'mdbreact';
 import './Users.scss';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/userActions';
+import { Loader } from '../../components/Loader/Loader';
 
-
-export const Users = () => {
-  const [users, setUsers] = useState([]);
+export const Users = ({history}) => {
   const [idUser, setIdUser] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [datatable, setDatatable] = useState({});
+  const [loading, setLoading] = useState(false);
   // Modal Delete User
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = (id) => {setShowModal(true); setIdUser(id)};
 
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
   // Get Users
-  React.useEffect(() => {
+  useEffect(() => {    
+    if(!userInfo.role === "admin") {
+      history.push('/');
+    }
     getUsers();
   }, []);
 
   const getUsers = async () => {
     try {
-      beduStoreAPI.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+      setLoading(true);
+      beduStoreAPI.defaults.headers.common['Authorization'] = `Bearer ${userInfo.token}`;
       beduStoreAPI
         .get('/users')
         .then((response) => {
           let users = response.data.data;
           for (let i = 0; i < users.length; i++) {
-            users[i].role = users[i].role === "user" ? <i className="icon-admin bi bi-x"></i> : <i className="icon-admin bi bi-check2"></i>
-            users[i].edit = <Link className="btn btn-primary btn-sm" to={"/user/update/" + users[i]._id}>
+            users[i].role = users[i].role === "user" ? <div className="w-100 text-center"><i className="icon-admin bi bi-x"></i></div>: <div className="w-100 text-center"><i className="icon-admin bi bi-check2"></i></div>;
+            users[i].edit = <div className="d-flex justify-content-around">
+                          <Link className="btn btn-primary btn-sm" to={`admin/user/${users[i]._id}/edit`}>
                             <i className="bi bi-pencil-square"></i>
-                          </Link>;
-            users[i].delete = <button onClick={(e) => {handleShow(users[i]._id)}} className="btn btn-danger btn-sm">
-                                <i className="bi bi-trash-fill"></i>
-                            </button>;
-
+                          </Link>
+                          <Button size="sm" onClick={(e) => {handleShow(users[i]._id)}} variant="danger">
+                            <i className="bi bi-trash-fill"></i>
+                          </Button>                        
+                          </div>;
           }
-          setUsers(response.data.data);
           setDatatable({
             columns: [
               {
@@ -72,82 +82,50 @@ export const Users = () => {
                 field: 'edit',
                 sort: 'disabled',
                 width: 150,
-              },
-              {
-                label: '',
-                field: 'delete',
-                sort: 'disabled',
-                width: 150,
-              },
+              }
             ],
             rows: users,
-          })
+          });
+          setLoading(false);
         })
         .catch((error) => {
-          //setError(error.response.data.error);
-          //setLoading(false);
-          console.log(error);
+          setError(error.response.data.error);
+          setLoading(false);
         });
     } catch (e) {
-      console.log(e);
+      setError(error.response.data.error);
     }
   };
 
   // Delete User
   const deleteUser = async () => {
     try {
-      beduStoreAPI.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+      beduStoreAPI.defaults.headers.common['Authorization'] = `Bearer ${userInfo.token}`;
       beduStoreAPI
         .delete(`/users/${idUser}`)
         .then((response) => {
           setSuccess("Usuario eliminado con éxito");
+          if(idUser === userInfo._id) {
+            dispatch(logout());
+          }
           getUsers();
         })
         .catch((error) => {
-          setError("Usuario eliminado con éxito");
-          console.log(error);
+          setError(error.response.data.error);
         });
         handleClose();
     } catch (e) {
-      console.log(e);
+      setError(error.response.data.error);
     }
   };
 
   return (
     <Container className="container-table">
+      { loading && <Loader /> }
       <h1 className="mb-4">Usuarios</h1>
       { error && <Message variant="danger">{error}</Message> }
       { success && <Message variant="success">{success}</Message> }
-      <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20, 25]} entries={5} pagingTop searchTop searchBottom={false} pagesAmount={4} data={datatable} />
-      {/* <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th className="text-center">Admin</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={index}>
-              <td>{user._id}</td>
-              <td>{user.fullName}</td>
-              <td>{user.email}</td>
-              <td className="text-center icon-admin">{ user.role === "user" ? <i className="bi bi-x"></i> : <i className="bi bi-check2"></i>}</td>
-              <td className="d-flex justify-content-around">
-                <Link className="btn btn-primary btn-sm" to={"/user/update/" + user._id}>
-                  <i className="bi bi-pencil-square"></i>
-                </Link>
-                <button onClick={(e) => {handleShow(user._id)}} className="btn btn-danger btn-sm">
-                  <i className="bi bi-trash-fill"></i>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table> */}
+      <MDBDataTableV5 className="table-sm" striped bordered responsive hover entriesOptions={[5, 10, 15, 20, 25]} entries={5} pagingTop searchTop searchBottom={false} pagesAmount={4} data={datatable} />
       <Modal size="sm" show={showModal} onHide={handleClose}  backdrop="static"
         keyboard={false} centered>
         <Modal.Header closeButton>
