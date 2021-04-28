@@ -1,12 +1,12 @@
-import React from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import './Payment.scss'
+import React from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Payment.scss';
 
 export const Payment = () => {
    return (
       <Container>
-         <h2>Metodo de pago</h2>
+         <h2>Método de pago</h2>
          <Form className="form-payment">
             <Form.Group controlId="formGroupEmail">
                <Form.Label>Selecciona método de pago:</Form.Label>

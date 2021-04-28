@@ -1,10 +1,10 @@
-import React from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export const Address = () => {
-   return (
-      <Container>
+    return (
+        <Container>
             <Form className="form">
                 <Form.Group>
                     <Form.Label>Dirección</Form.Label>
@@ -23,13 +23,13 @@ export const Address = () => {
                     <Form.Control type="password" />
                 </Form.Group>
                 <Form.Group className="text-right">
-                <Link to="/payment">
-                    <Button type="submit" className="button-orange mt-4">
-                    Siguiente
+                    <Link to="/payment">
+                        <Button type="submit" className="button-orange mt-4">
+                            Siguiente
                     </Button>
-                </Link>
+                    </Link>
                 </Form.Group>
             </Form>
         </Container>
-   )
+    )
 }
