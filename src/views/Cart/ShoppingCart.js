@@ -54,7 +54,6 @@ export const ShoppingCart = ({ match, location, history }) => {
                                             </Col>
                                             <Col md={2}>
                                                 ${item.price.toFixed(2)}
-                                                {console.log(item.price)}
                                             </Col>
                                             <Col md={3}>
                                                 <Form.Control 
