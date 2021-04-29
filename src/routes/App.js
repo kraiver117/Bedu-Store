@@ -13,7 +13,6 @@ import { UpdateProduct } from '../views/Products/UpdateProduct.js';
 import { Products } from '../views/Products/Products.js';
 import { Register } from '../views/Register/Register';
 import { ShoppingCart } from '../views/Cart/ShoppingCart.js';
-import { Profile } from '../views/Profile/Profile.js';
 
 export const App = () => {
     return (
@@ -23,7 +22,6 @@ export const App = () => {
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
-                    <Route exact path='/profile' component={Profile} />
                     <Route exact path='/address' component={Address} />
                     <Route exact path='/payment' component={Payment} />
                     <Route exact path='/makeorder' component={MakeOrder} />
