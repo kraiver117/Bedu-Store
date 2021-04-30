@@ -107,7 +107,7 @@ export const UpdateUser = ({history}) => {
                     { error && <Message variant="danger">{error}</Message> }
                     { success && <Message variant="success">{success}</Message> }
                     <Form.Group className="text-center">
-                        <Button type="submit" className="button-orange mt-4">
+                        <Button type="submit" className="btn-orange mt-4">
                             Actualizar usuario
                         </Button>
                     </Form.Group>
