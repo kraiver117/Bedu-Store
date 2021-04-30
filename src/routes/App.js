@@ -14,6 +14,7 @@ import { Products } from '../views/Products/Products.js';
 import { Register } from '../views/Register/Register';
 import { Users } from '../views/Users/Users';
 import { UpdateUser } from '../views/Users/UpdateUser';
+import { ShoppingCart } from '../views/Cart/ShoppingCart.js';
 
 export const App = () => {
     return (
@@ -30,6 +31,7 @@ export const App = () => {
                     <Route exact path='/makeorder' component={MakeOrder} />
                     <Route exact path='/order-detail' component={OrderDetail} />
                     <Route exact path='/product/:id' component={ProductDetails} />
+                    <Route exact path='/cart/:id?' component={ShoppingCart} />
                     <Route exact path='/admin/productlist' component={Products} />
                     <Route exact path='/admin/createproduct' component={CreateProduct} />
                     <Route exact path='/admin/product/:id/edit' component={UpdateProduct} />

@@ -7,7 +7,7 @@ import { Message } from '../../components/Alert/Alert';
 import { CardsCarousel } from '../../components/CardsCarousel/CardsCarousel';
 import { Loader } from '../../components/Loader/Loader';
 
-export const ProductDetails = ({ match }) => {
+export const ProductDetails = ({ history, match }) => {
     const [qty, setQty] = useState(0);
 
     const productId = match.params.id;
@@ -20,6 +20,10 @@ export const ProductDetails = ({ match }) => {
         dispatch(listProductDetails(productId));
         window.scrollTo(0,0);
     }, [dispatch, productId]);
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
 
     return (
         <Container>
@@ -95,6 +99,7 @@ export const ProductDetails = ({ match }) => {
                                                 className='btn-orange btn-block'
                                                 type='button'
                                                 disabled={product.inStock === 0}
+                                                onClick={addToCartHandler}
                                             >
                                                 Agregar al carrito
                                             </Button>
