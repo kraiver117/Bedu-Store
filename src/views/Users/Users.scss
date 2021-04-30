@@ -1,0 +1,33 @@
+@use "sass:map";
+@import "../../styles/_vars.scss";
+
+.container-table {
+    margin: 50px auto;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dee2e6 !important;
+}
+
+.btn-orange {
+    background-color: map.get($palette, "secondary-color");
+    border: map.get($palette, "secondary-color");
+    color: #fff;
+}
+
+.icon-admin {
+    font-size: 1.5rem;
+}
+
+.bi-x {
+    color: red;
+}
+
+.bi-check2 {
+    color: #36DF27;
+}
+
+.users-table {
+    min-height: 370px;
+    width: 100%
+}
