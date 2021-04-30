@@ -1,5 +1,6 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {
     Container,
@@ -9,7 +10,7 @@ import {
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
-import '../../styles/form.scss';
+import { FormContainer } from '../../components/FormContainer/FormContainer';
 
 export const UpdateUser = ({history}) => {
     const { id } = useParams();
@@ -67,46 +68,51 @@ export const UpdateUser = ({history}) => {
             })
     }
     return (
-        <Container>
+        <Container className='mb-5'>
             { loading && <Loader /> }
-            <Form className="form" onSubmit={updtadeUserHandler}>
-                <Form.Group controlId="formBasicEmail">
-                    <h4 className="text-center my-4">Ediar usuario</h4>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control type="text" defaultValue={fullName} 
-                    onChange={(e) => {
-                        setFullName(e.target.value);
-                        setError('');
-                    }}
-                    />
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Correo Electrónico*</Form.Label>
-                    <Form.Control type="email" defaultValue={email} 
-                    onChange={(e) => {
-                        setEmail(e.target.value);
-                        setError('');
-                    }} 
-                    />
-                </Form.Group>
-                <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Admin" checked={role === "admin"}
-                    onChange={(e) => {
-                        setRole(e.target.checked ? "admin" : "user");
-                        setError('');
-                    }} 
-                    />
-                </Form.Group>
-                { error && <Message variant="danger">{error}</Message> }
-                { success && <Message variant="success">{success}</Message> }
-                <Form.Group className="text-center">
-                    <Button type="submit" className="button-orange mt-4">
-                        Actualizar usuario
-                    </Button>
-                </Form.Group>
-            </Form>
+            <Link to='/users' className='btn btn-light my-3'>
+                Regresar
+            </Link>
+            <FormContainer>
+                <Form onSubmit={updtadeUserHandler}>
+                    <Form.Group controlId="formBasicEmail">
+                        <h4 className="text-center my-4">Editar usuario</h4>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Nombre</Form.Label>
+                        <Form.Control type="text" defaultValue={fullName} 
+                            onChange={(e) => {
+                                setFullName(e.target.value);
+                                setError('');
+                            }}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Correo Electrónico*</Form.Label>
+                        <Form.Control type="email" defaultValue={email} 
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                setError('');
+                            }} 
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Admin" checked={role === "admin"}
+                            onChange={(e) => {
+                                setRole(e.target.checked ? "admin" : "user");
+                                setError('');
+                            }} 
+                        />
+                    </Form.Group>
+                    { error && <Message variant="danger">{error}</Message> }
+                    { success && <Message variant="success">{success}</Message> }
+                    <Form.Group className="text-center">
+                        <Button type="submit" className="button-orange mt-4">
+                            Actualizar usuario
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </FormContainer>
         </Container>
     );
 }

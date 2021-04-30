@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Modal, Button } from 'react-bootstrap';
 import { MDBDataTableV5 } from 'mdbreact';
-import './Users.scss';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
 import { Loader } from '../../components/Loader/Loader';
+import './Users.scss';
 
 export const Users = ({history}) => {
   const [idUser, setIdUser] = useState([]);

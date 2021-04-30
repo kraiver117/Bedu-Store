@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -59,37 +59,37 @@ export const Register = ( {history, location} ) => {
                 <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" 
-                    onChange={(e) => {
-                        setName(e.target.value);
-                        setError('');
-                    }}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                            setError('');
+                        }}
                     />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Apellido</Form.Label>
                     <Form.Control type="text" 
-                    onChange={(e) => {
-                        setLastName(e.target.value);
-                        setError('');
-                    }}
+                        onChange={(e) => {
+                            setLastName(e.target.value);
+                            setError('');
+                        }}
                     />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Correo Electrónico*</Form.Label>
                     <Form.Control type="email"
-                    onChange={(e) => {
-                        setEmail(e.target.value);
-                        setError('');
-                    }} 
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setError('');
+                        }} 
                     />
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control type="password" 
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                        setError('');
-                    }}/>
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setError('');
+                        }}/>
                 </Form.Group>
                 { error && <Message variant="danger">{error}</Message> }
                 { success && <Message variant="success">{success}</Message> }
