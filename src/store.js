@@ -4,7 +4,9 @@ import thunk from 'redux-thunk';
 
 //--------User Reducers-------//
 import {
-    userLoginReducer
+    userLoginReducer,
+    userDetailsReducer,
+    userUpdateProfileReducer
 } from './reducers/userReducers';
 
 //--------Product Reducers-------//
@@ -16,15 +18,26 @@ import {
     productDeleteReducer
 } from './reducers/productReducers';
 
+//--------Product Reducers-------//
+import {
+    listAllOrdersReducer,
+    listMyOrdersReducer,
+    orderDetailsReducer,
+} from './reducers/orderReducers';
 
 //-------Combine Reducers------//
 const reducer = combineReducers({
     userLogin: userLoginReducer,
+    userDetails: userDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
     productList: productListReducer,
     productDetails: productDetailsReducer,
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
-    productDelete: productDeleteReducer
+    productDelete: productDeleteReducer,
+    listAllOrders: listAllOrdersReducer,
+    listMyOrders: listMyOrdersReducer,
+    orderDetails: orderDetailsReducer
 });
 
 // const cartItemsFromStorage = localStorage.getItem('cartItems') 
