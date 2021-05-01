@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { listOrders } from '../../actions/orderActions';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
-import './Order.scss';
+import './Orders.scss';
 
 export const Orders = () => {
     const dispatch = useDispatch();
@@ -30,13 +30,15 @@ export const Orders = () => {
                 : (
                     <Table striped bordered hover responsive className='table-sm'>
                         <thead>
-                            <th>Id</th>
-                            <th>Usuario</th>
-                            <th>Fecha</th>
-                            <th>Total</th>
-                            <th>Pagado</th>
-                            <th>Entregado</th>
-                            <th></th>
+                            <tr>
+                                <th>Id</th>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
+                                <th>Total</th>
+                                <th>Pagado</th>
+                                <th>Entregado</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
                             {
@@ -61,7 +63,7 @@ export const Orders = () => {
                                             }
                                         </td>
                                         <td>
-                                            <LinkContainer to={`order/${order._id}`}>
+                                            <LinkContainer to={`/order/${order._id}`}>
                                                 <Button variant='light' className='btn-sm'>
                                                     Detalles
                                                 </Button>
