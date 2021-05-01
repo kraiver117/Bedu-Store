@@ -135,7 +135,7 @@ export const OrderDetails = ({ match, history }) => {
                               />
                            </ListGroup.Item>
                         )}
-                        {userInfo && userInfo.role === 'admin' && (
+                        {userInfo && userInfo.role === 'admin' && order.isPaid && !order.isDelivered && (
                            <ListGroup.Item>
                               <Button type='button' className='btn btn-block btn-orange' onClick={deliverHandler}>
                                  Marcar como producto entregado
@@ -148,5 +148,5 @@ export const OrderDetails = ({ match, history }) => {
             </Row>
          )}
       </Container>
-   )
+   );
 }
