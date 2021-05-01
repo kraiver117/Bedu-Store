@@ -29,7 +29,7 @@ export const ProductCard = ({ product }) => {
                 </Card.Text>
             </Card.Body>
             <Card.Footer>
-                <LinkContainer to=''>
+                <LinkContainer to={`/cart/${product._id}`}>
                     <Card.Link className='font-weight-bold text-dark'>
                         COMPRAR
                     </Card.Link>

@@ -27,7 +27,7 @@ export const Products = () => {
 
     const deleteProductHandler = (id) => {
         if (window.confirm('¿Deseas eliminar el producto?')) {
-            dispatch(deleteProduct(id))
+            dispatch(deleteProduct(id));
         }
     }
 
