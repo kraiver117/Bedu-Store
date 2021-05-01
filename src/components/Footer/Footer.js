@@ -1,11 +1,10 @@
 import React from 'react';
-import './Footer.scss';
-
 import {
     Container,
     Row,
     Col
 } from 'react-bootstrap';
+import './Footer.scss';
 
 export const Footer = () => {
     return (
@@ -37,7 +36,7 @@ export const Footer = () => {
                     </Col>
                 </Row>   
                 <Row>
-                <Col className="footer-box"> 
+                    <Col className="footer-box"> 
                         <div className="d-flex justify-content-md-center">
                             <a href="https://www.facebook.com/BeduOrg" target="_blank" rel="noreferrer">
                                 <svg className="mr-5 mx-md-5 social-networks-icon" viewBox="0 0 39 41" fill="none" xmlns="http://www.w3.org/2000/svg">
