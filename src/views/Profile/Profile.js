@@ -26,8 +26,8 @@ export const Profile = ({ history }) => {
     const myOrders = useSelector(state => state.listMyOrders);
     const { loading: loadingMyOrders, error: errorMyorders, orders = [] } = myOrders;
 
-    const userUpdateProfile = useSelector(state => state.userUpdateProfile)
-    const { success } = userUpdateProfile
+    const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+    const { success } = userUpdateProfile;
 
     useEffect(() => {
         if (!userInfo) {
