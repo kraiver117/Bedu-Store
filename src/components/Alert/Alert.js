@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'react-bootstrap';
 
-export const Message = ({variant, children}) => {
+export const Message = ({variant, textPosition, children}) => {
     return (
-        <Alert className="text-center" variant={variant}>
+        <Alert className={`text-${textPosition}`} variant={variant}>
             {children}
         </Alert>
     )
@@ -16,5 +16,6 @@ Message.propTypes = {
 }
 
 Message.defaultProps = {
-    variant: 'primary'
+    textPosition: 'center',
+    variant: 'info'
 }

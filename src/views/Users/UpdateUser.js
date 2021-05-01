@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {
@@ -50,6 +50,7 @@ export const UpdateUser = ({history}) => {
             history.push('/');
         }
         getUser();
+        // eslint-disable-next-line
     }, []);
 
     const updtadeUserHandler = (e) => {

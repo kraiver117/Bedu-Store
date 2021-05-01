@@ -60,7 +60,20 @@ export const Header = () => {
                         }
                         <FaShoppingCart size={20}/>    
                     </Link>
-                    <NavDropdown id="user-dropdown" title={userInfo ? userInfo.fullName : <BsPeopleCircle className='secondary-color' size={20}/>} alignRight>
+                    <NavDropdown 
+                        id="user-dropdown" 
+                        title={userInfo 
+                            ? <span className='text-dark'>
+                                {userInfo.fullName}
+                            </span> 
+                            : <>
+                                <BsPeopleCircle className='secondary-color mr-1' size={20}/>
+                                <span className='text-dark'>
+                                    Iniciar Sesión
+                                </span>
+                            </>
+                        }
+                    >
                         {
                             userInfo 
                                 ?   <>
@@ -92,7 +105,7 @@ export const Header = () => {
                                                                     Productos
                                                                 </NavDropdown.Item>
                                                             </LinkContainer>
-                                                            <LinkContainer to='/orders'>
+                                                            <LinkContainer to='/admin/orderslist'>
                                                                 <NavDropdown.Item>
                                                                     <BsReverseLayoutTextSidebarReverse className="mr-3" />
                                                                     Pedidos

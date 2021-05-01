@@ -12,7 +12,7 @@ export const Products = () => {
     const dispatch = useDispatch();
 
     const productList = useSelector(state => state.productList)
-    const { loading, error, products, page, pages } = productList;
+    const { loading, products } = productList;
 
     const productDelete = useSelector(state => state.productDelete)
     const { 
