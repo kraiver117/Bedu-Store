@@ -12,6 +12,8 @@ import { CreateProduct } from '../views/Products/CreateProduct.js';
 import { UpdateProduct } from '../views/Products/UpdateProduct.js';
 import { Products } from '../views/Products/Products.js';
 import { Register } from '../views/Register/Register';
+import { Profile } from '../views/Profile/Profile.js';
+import { Orders } from '../views/Orders/Orders.js';
 
 export const App = () => {
     return (
@@ -21,6 +23,7 @@ export const App = () => {
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
+                    <Route exact path='/profile' component={Profile} />
                     <Route exact path='/address' component={Address} />
                     <Route exact path='/payment' component={Payment} />
                     <Route exact path='/makeorder' component={MakeOrder} />
@@ -29,6 +32,7 @@ export const App = () => {
                     <Route exact path='/admin/productlist' component={Products} />
                     <Route exact path='/admin/createproduct' component={CreateProduct} />
                     <Route exact path='/admin/product/:id/edit' component={UpdateProduct} />
+                    <Route exact path='/admin/orderslist' component={Orders} />
                 </Switch>
             </Layout>
         </BrowserRouter>
