@@ -30,6 +30,7 @@ export const Users = ({history}) => {
       history.push('/');
     }
     getUsers();
+    // eslint-disable-next-line
   }, []);
 
   const getUsers = async () => {
