@@ -92,7 +92,7 @@ export const Header = () => {
                                                                     Productos
                                                                 </NavDropdown.Item>
                                                             </LinkContainer>
-                                                            <LinkContainer to='/orders'>
+                                                            <LinkContainer to='/admin/orderslist'>
                                                                 <NavDropdown.Item>
                                                                     <BsReverseLayoutTextSidebarReverse className="mr-3" />
                                                                     Pedidos
