@@ -1,47 +1,137 @@
-import React from 'react';
-import { Button, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Button, Col, Container, ListGroup, Row, Image, Card } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { CheckoutSteps } from '../CheckoutSteps/CheckoutSteps';
+import { Message } from '../Alert/Alert';
 
 import './MakeOrder.scss';
+import { Link } from 'react-router-dom';
+import { createOrder } from '../../actions/orderActions';
 
-export const MakeOrder = () => {
+export const MakeOrder = ({ history }) => {
+   const dispatch = useDispatch();
+
+   const cart = useSelector(state => state.cart);
+
+   const orderCreate = useSelector(state => state.orderCreate);
+   const { order, success, error } = orderCreate;
+
+
+   cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
+   cart.shippingPrice = 150;
+   cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice)).toFixed(2);
+
+   useEffect(() => {
+      if (success) {
+         history.push(`/order/${order._id}`);
+      }
+      // eslint-disable-next-line
+   }, [history, success]);
+
+   const placeOrderHandler = () => {
+      dispatch(createOrder({
+         orderItems: cart.cartItems,
+         shippingAddress: cart.shippingAddress,
+         paymentMethod: cart.paymentMethod,
+         itemsPrice: cart.itemsPrice,
+         shippingPrice: cart.shippingPrice,
+         totalPrice: cart.totalPrice
+      }));
+   }
+   
    return (
       <Container>
          <CheckoutSteps step1 step2 step3 step4 />
-         <section className="makeorder-container">
-            <div className="d-flex justify-content-around my-5">
-               <div className="makeorder-info">
-                  <h2> Dirección </h2>
-                  <p> Direccion: Nuevo mexico #123 </p>
-                  <hr />
-                  <h2> Método de pago </h2>
-                  <p> Metodo: paypal </p>
-                  <hr />
-                  <h2> Productos </h2>
-                  <div className="makeorder-products d-flex align-items-center">
-                     <img src="./images/playeraBedu.png" alt="Playera BEDU" />
-                     <p>Platera BEDU</p>
-                     <p className="total"> 1x $120.00 = <span>$120.00</span> </p>
-                  </div>
-               </div>
-               <div className="makeorder-checkout">
-                  <div>
-                     <h2>Resumen de pedido</h2>
-                     <p>Productos  <span>$120</span></p>
-                     <hr />
-                     <p>Envio  <span>$50</span></p>
-                     <hr />
-                     <p>Productos  <span>$170</span></p>
-                     <Link to="/order-detail">
-                        <Button className="btn-checkout" block>
-                           Siguiente
+         <Row>
+            <Col md={8}>
+               <ListGroup variant='flush'>
+                  <ListGroup.Item>
+                     <h2> Dirección </h2>
+                     <p><strong>Dirección:</strong> {cart.shippingPrice.address} 
+                        {cart.shippingAddress.city}{' '}
+                        {cart.shippingAddress.postalCode}{' '}  
+                        {cart.shippingAddress.country} 
+                     </p>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                     <h2> Método de pago </h2>
+                     <strong>
+                        Método:
+                     </strong> 
+                     {' '}{cart.paymentMethod}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                     <h2> Productos </h2>
+                     <div className="makeorder-products d-flex align-items-center">
+                        {
+                           cart.cartItems.length === 0 
+                              ? <Message>Tu carrito de compras esta vacío</Message>
+                              : <ListGroup variant='flush'>
+                                 {
+                                    cart.cartItems.map((item, index) => (
+                                       <ListGroup.Item key={index}>
+                                          <Row>
+                                             <Col md={1}>
+                                                <Image src={item.image} alt={item.name} fluid rounded/>
+                                             </Col>
+                                             <Col>
+                                                <Link className='text-dark' to={`/product/${item.product}`}>
+                                                   {item.name}
+                                                </Link>
+                                             </Col>
+                                             <Col md={4}>
+                                                <p className="total"> {item.qty} x {item.price} = <span>${item.qty * item.price}</span></p>
+                                             </Col>
+                                          </Row>
+                                       </ListGroup.Item>
+                                    ))
+                                 }
+                              </ListGroup>
+                        }
+                     </div>
+                  </ListGroup.Item>
+               </ListGroup>
+            </Col>
+            <Col md={4}>
+               <Card>
+                  <ListGroup>
+                     <ListGroup.Item>
+                        <h2>Resumen de pedido</h2>
+                     </ListGroup.Item>
+                     <ListGroup.Item>
+                        <Row>
+                           <Col>Productos</Col>
+                           <Col>${cart.itemsPrice.toFixed(2)}</Col>
+                        </Row>
+                     </ListGroup.Item>
+                     <ListGroup.Item>
+                        <Row>
+                           <Col>Envío</Col>
+                           <Col>${cart.shippingPrice.toFixed(2)}</Col>
+                        </Row>
+                     </ListGroup.Item>
+                     <ListGroup.Item>
+                        <Row>
+                           <Col>Total</Col>
+                           <Col>${cart.totalPrice.toFixed(2)}</Col>
+                        </Row>
+                     </ListGroup.Item>
+                     <ListGroup.Item>
+                        {error && <Message variant='danger'>{error}</Message>}
+                     </ListGroup.Item>
+                     <ListGroup.Item>
+                        <Button 
+                           block
+                           className="btn-orange" 
+                           onClick={placeOrderHandler}
+                        >
+                           Realizar pedido
                         </Button>
-                     </Link>
-                  </div>
-               </div>
-            </div>
-         </section>
+                     </ListGroup.Item>
+                  </ListGroup>
+               </Card>
+            </Col>
+         </Row>
       </Container>
    )
 }
