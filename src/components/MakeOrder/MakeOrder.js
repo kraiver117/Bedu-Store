@@ -1,12 +1,14 @@
 import React from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { CheckoutSteps } from '../CheckoutSteps/CheckoutSteps';
 
 import './MakeOrder.scss';
 
 export const MakeOrder = () => {
    return (
       <Container>
+         <CheckoutSteps step1 step2 step3 step4 />
          <section className="makeorder-container">
             <div className="d-flex justify-content-around my-5">
                <div className="makeorder-info">
