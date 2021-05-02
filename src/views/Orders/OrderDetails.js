@@ -112,19 +112,19 @@ export const OrderDetails = ({ match, history }) => {
                         <ListGroup.Item>
                            <Row>
                               <Col>Productos</Col>
-                              <Col>${order.totalPrice}</Col>
+                              <Col>${order.totalPrice.toFixed(2)}</Col>
                            </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                            <Row>
                               <Col>Envío</Col>
-                              <Col>${order.shippingPrice}</Col>
+                              <Col>${order.shippingPrice.toFixed(2)}</Col>
                            </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                            <Row>
                               <Col>Total</Col>
-                              <Col>${order.totalPrice + order.shippingPrice}</Col>
+                              <Col>${(order.totalPrice + order.shippingPrice).toFixed(2)}</Col>
                            </Row>
                         </ListGroup.Item>
                         {!order.isPaid && (

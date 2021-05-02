@@ -43,6 +43,11 @@ code {
 
 .secondary-color {
   color: #FF5F29;
+  transition: all 0.2s ease-in-out;
+}
+
+.secondary-color:hover {
+  color: #000000;
 }
 
 .dropdown-item.active {
