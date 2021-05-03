@@ -20,18 +20,24 @@ export const CreateProduct = ({ history }) => {
 
     const dispatch = useDispatch();
 
-    const productCreate = useSelector(state => state.productCreate);
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
+    const productCreate = useSelector(state => state.productCreate);
     const { loading: loadingCreate, error: errorCreate, success: successCreate } = productCreate;
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        } 
+
         if (successCreate) {
             dispatch({ type: PRODUCT_CREATE_RESET });
             history.push('/admin/productlist');
         } else if (errorCreate) {
             dispatch({ type: PRODUCT_CREATE_RESET });
         }
-    }, [dispatch, successCreate, errorCreate, history]);
+    }, [dispatch, successCreate, errorCreate, userInfo, history]);
 
     const handleCreateProduct = (e) => {
         e.preventDefault();

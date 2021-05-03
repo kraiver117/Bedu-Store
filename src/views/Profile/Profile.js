@@ -139,7 +139,7 @@ export const Profile = ({ history }) => {
                                         <td>{order.isPaid ? (order.paidAt.substring(0,10)) : (
                                             <FaTimes color='red' />
                                         )}</td>
-                                        <td>{order.isDeliveredAt ? (order.isDeliveredAt.substring(0,10)) : (
+                                        <td>{order.isDelivered ? (order.deliveredAt.substring(0,10)) : (
                                             <FaTimes color='red' />
                                         )}</td>
                                         <td>

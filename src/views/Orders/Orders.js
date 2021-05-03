@@ -8,7 +8,7 @@ import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
 import './Orders.scss';
 
-export const Orders = () => {
+export const Orders = ({ history }) => {
     const dispatch = useDispatch();
 
     const listAllOrders = useSelector(state => state.listAllOrders);
@@ -18,10 +18,14 @@ export const Orders = () => {
     const { userInfo } = userLogin;
 
     useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
+
         if (userInfo && userInfo.role === 'admin') {
             dispatch(listOrders());
         }
-    }, [dispatch, userInfo]);
+    }, [dispatch, userInfo, history]);
 
     return (
         <Container className='my-4'>
