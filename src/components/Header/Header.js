@@ -31,7 +31,7 @@ export const Header = () => {
     }
 
     return (
-        <Navbar className='navbar-fixed' bg="light" expand="lg">
+        <Navbar className='navbar-fixed p-navbar' bg="light" expand="lg">
             <LinkContainer to='/'>
                 <Navbar.Brand className="navbar-title">Bedu Store</Navbar.Brand>
             </LinkContainer>
