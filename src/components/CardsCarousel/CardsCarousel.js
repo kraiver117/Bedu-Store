@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -8,7 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CardsCarousel.scss';
 
-export const CardsCarousel = ({ title = 'Productos' }) => {
+export const CardsCarousel = ({ title }) => {
     const { width } = useWindowDimensions();
 
     const settings = {
@@ -23,7 +24,7 @@ export const CardsCarousel = ({ title = 'Productos' }) => {
     
     return (
         <Container className='carousel-container my-5'>
-                <h3 className="text-center">{ title }</h3>
+                {title  && <h3 className="text-center">{ title }</h3>}
                 <Slider {...settings}>
                     {
                         products.map( (product, index) => (
@@ -33,4 +34,12 @@ export const CardsCarousel = ({ title = 'Productos' }) => {
                 </Slider>
         </Container>
     )
+}
+
+CardsCarousel.propTypes = {
+    title: PropTypes.string
+}
+
+CardsCarousel.defaultProps = {
+    title: ''
 }

@@ -7,6 +7,8 @@ import { Message } from '../../components/Alert/Alert';
 import { CardsCarousel } from '../../components/CardsCarousel/CardsCarousel';
 import { Loader } from '../../components/Loader/Loader';
 
+import './ProductDetails.scss';
+
 export const ProductDetails = ({ history, match }) => {
     const [qty, setQty] = useState(0);
 
@@ -27,10 +29,10 @@ export const ProductDetails = ({ history, match }) => {
 
     return (
         <Container>
-            <Link className='btn btn-light my-4' to='/'>
+            <Link className='btn btn-light back-btn my-4' to='/'>
                 Regresar
             </Link>
-            { loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> : 
+            { loading ? <Loader className='d-flex' position='block' marginY='100px' /> : error ? <Message variant="danger">{error}</Message> : 
                 (
                     <>
                         <Row className='my-1'>
@@ -43,7 +45,7 @@ export const ProductDetails = ({ history, match }) => {
                                         <h5>{product.name}</h5>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <span className='secondary-color font-weight-bold'> Descripción: </span>{product.description}
+                                        <span className='orange-color font-weight-bold'> Descripción: </span>{product.description}
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Col>
@@ -53,24 +55,20 @@ export const ProductDetails = ({ history, match }) => {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>
-                                                <span className='secondary-color font-weight-bold'> Precio: </span>
+                                                    <span className='orange-color font-weight-bold'> Precio: </span>
                                                 </Col>
                                                 <Col>
-                                                    <strong>
-                                                        ${product.price}
-                                                    </strong>
+                                                    ${product.price}
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>
-                                                    <span className='secondary-color font-weight-bold'> Status: </span>
+                                                    <span className='orange-color font-weight-bold'> Status: </span>
                                                 </Col>
                                                 <Col>
-                                                    <strong>
-                                                        {product.inStock > 0 ? 'Disponible' : 'No disponible'}
-                                                    </strong>
+                                                    {product.inStock > 0 ? 'Disponible' : 'No disponible'}
                                                 </Col>
                                             </Row>
                                         </ListGroup.Item>
@@ -78,7 +76,7 @@ export const ProductDetails = ({ history, match }) => {
                                             <ListGroup.Item>
                                                 <Row>
                                                     <Col>
-                                                        <span className='secondary-color font-weight-bold'> Cantidad: </span>
+                                                        <span className='orange-color font-weight-bold'> Cantidad: </span>
                                                     </Col>
                                                     <Form.Control
                                                         as='select'

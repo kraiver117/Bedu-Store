@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 
 export const FormContainer = ({ children }) => {
@@ -11,4 +12,8 @@ export const FormContainer = ({ children }) => {
             </Row>
         </Container>
     );
+}
+
+FormContainer.propTypes = {
+    children: PropTypes.node
 }

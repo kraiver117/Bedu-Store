@@ -20,8 +20,7 @@ export const ProductCard = ({ product }) => {
                 <Card.Text as='p' style={{marginBottom: 2}}>
                     Precio
                 </Card.Text>
-                <Card.Text as='h5' className='secondary-color'>
-                    
+                <Card.Text as='h5' className='orange-color'>
                     ${product.price}
                 </Card.Text>
                 <Card.Text as='p'>
@@ -45,7 +44,14 @@ export const ProductCard = ({ product }) => {
 }
 
 ProductCard.propTypes = {
-    product: PropTypes.object
+    product: PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+        price: PropTypes.number,
+        countInStock: PropTypes.number,
+        image: PropTypes.string,
+        description: PropTypes.string
+    })
 }
 
 
