@@ -38,7 +38,7 @@ export const ShoppingCart = ({ match, location, history }) => {
                     <h3>Carrito de compras</h3>
                     { cartItems.length === 0
                         ?
-                            <Message>
+                            <Message variant='primary'>
                                 Tu carrito de compras está vacío. <Link to='/'>Ir a tienda</Link>
                             </Message>
                         :
