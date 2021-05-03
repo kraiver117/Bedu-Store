@@ -113,7 +113,7 @@ export const MakeOrder = ({ history }) => {
                      <ListGroup.Item>
                         <Row>
                            <Col>Total</Col>
-                           <Col>${cart.totalPrice.toFixed(2)}</Col>
+                           <Col>${cart.totalPrice}</Col>
                         </Row>
                      </ListGroup.Item>
                      <ListGroup.Item>
