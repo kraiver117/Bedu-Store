@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, ListGroup, Image, Button } from 'react-bootstrap';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getOrderDetails } from '../../actions/orderActions';
+import { deliverOrder, getOrderDetails, payOrder } from '../../actions/orderActions';
+import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
+import { ORDER_DELIVER_RESET, ORDER_PAY_RESET } from '../../constants/orderConstants';
 
 import './OrderDetails.scss';
 
 export const OrderDetails = ({ match, history }) => {
    const orderId = match.params.id;
+
+   const [sdkReady, setSdkReady] = useState(false);
 
    const dispatch = useDispatch();
 
@@ -19,21 +23,50 @@ export const OrderDetails = ({ match, history }) => {
 
    const orderDetails = useSelector(state => state.orderDetails);
    const { loading, error, order } = orderDetails;
+   
+   const orderPay = useSelector(state => state.orderPay);
+   const { success: successPay, loading: loadingPay } = orderPay;
+
+   const orderDeliver = useSelector(state => state.orderDeliver);
+   const { success: successDeliver, loading: loadingDeliver } = orderDeliver;
 
    useEffect(() => {
       if (!userInfo) {
          history.push('/login');
-      } else {
-         dispatch(getOrderDetails(orderId));
+      } 
+
+      const addPayPalScript = async () => {
+         const { data: clientId } = await beduStoreAPI.get('/config/paypal');
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+            script.async = true;
+            script.onload = () => {
+               setSdkReady(true)
+            }
+            document.body.appendChild(script);
       }
-   }, [dispatch, history, orderId, userInfo]);
+      
+      if(!order || successPay || successDeliver || order._id !== orderId) {
+         dispatch({ type: ORDER_PAY_RESET });
+         dispatch({ type: ORDER_DELIVER_RESET });
+         dispatch(getOrderDetails(orderId));
+      } else if (!order.isPaid) {
+         if (!window.paypal) {
+            addPayPalScript();
+         } else {
+            setSdkReady(true);
+         }
+      }
+   }, [dispatch, history, orderId, userInfo, order, successDeliver, successPay]);
 
    const successPaymentHandler = (paymentResults) => {
-      //TODO: add logic to payment
+      console.log(paymentResults);
+      dispatch(payOrder(orderId, paymentResults));
    }
 
    const deliverHandler = () => {
-      //TODO: add logic to mark as delivered order
+      dispatch(deliverOrder(order));
    }
 
    return (
@@ -129,12 +162,16 @@ export const OrderDetails = ({ match, history }) => {
                         </ListGroup.Item>
                         {!order.isPaid && (
                            <ListGroup.Item>
-                              <PayPalButton 
-                                 amount={order.totalPrice} 
-                                 onSuccess={successPaymentHandler}
-                              />
+                              {loadingPay && <Loader />}
+                              {!sdkReady ? <Loader /> : (
+                                 <PayPalButton 
+                                    amount={order.totalPrice} 
+                                    onSuccess={successPaymentHandler}
+                                 />
+                              )}
                            </ListGroup.Item>
                         )}
+                        {loadingDeliver && <Loader />}
                         {userInfo && userInfo.role === 'admin' && order.isPaid && !order.isDelivered && (
                            <ListGroup.Item>
                               <Button type='button' className='btn btn-block btn-orange' onClick={deliverHandler}>

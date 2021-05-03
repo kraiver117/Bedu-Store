@@ -17,6 +17,7 @@ import { Orders } from '../views/Orders/Orders.js';
 import { Users } from '../views/Users/Users';
 import { UpdateUser } from '../views/Users/UpdateUser';
 import { ShoppingCart } from '../views/Cart/ShoppingCart.js';
+import { PageNotFound } from '../views/PageNotFound/PageNotFound.js';
 
 export const App = () => {
     return (
@@ -39,6 +40,7 @@ export const App = () => {
                     <Route exact path='/admin/createproduct' component={CreateProduct} />
                     <Route exact path='/admin/product/:id/edit' component={UpdateProduct} />
                     <Route exact path='/admin/orderslist' component={Orders} />
+                    <Route path='*' component={PageNotFound} />
                 </Switch>
             </Layout>
         </BrowserRouter>
