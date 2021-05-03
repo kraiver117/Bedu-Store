@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -59,4 +60,18 @@ export const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
             </Nav.Item>
         </Nav>
     )
+}
+
+CheckoutSteps.propTypes = {
+    step1: PropTypes.bool,
+    step2: PropTypes.bool,
+    step3: PropTypes.bool,
+    step4: PropTypes.bool
+}
+
+CheckoutSteps.defaultProps = {
+    step1: false,
+    step2: false,
+    step3: false,
+    step4: false
 }
