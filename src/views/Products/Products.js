@@ -95,7 +95,7 @@ export const Products = ({ history }) => {
     }
 
     useEffect(() => {
-        if (userInfo.role !== 'admin') {
+        if (!userInfo) {
             history.push('/login');
         }
 

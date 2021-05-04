@@ -121,7 +121,7 @@ export const OrderDetails = ({ match, history }) => {
                                              <Image src={item.image} alt={item.name} fluid rounded />
                                           </Col>
                                           <Col>
-                                             <Link className='text-dark' to={`/product/${item._id}`}>
+                                             <Link className='text-dark' to={`/product/${item.product}`}>
                                                 {item.name}
                                              </Link>
                                           </Col>
