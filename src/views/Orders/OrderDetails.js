@@ -145,7 +145,7 @@ export const OrderDetails = ({ match, history }) => {
                         <ListGroup.Item>
                            <Row>
                               <Col>Productos</Col>
-                              <Col>${order.totalPrice.toFixed(2)}</Col>
+                              <Col>${order && order.orderItems && (order.orderItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2))}</Col>
                            </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
@@ -157,7 +157,7 @@ export const OrderDetails = ({ match, history }) => {
                         <ListGroup.Item>
                            <Row>
                               <Col>Total</Col>
-                              <Col>${(order.totalPrice + order.shippingPrice).toFixed(2)}</Col>
+                              <Col>${(order.orderItems.reduce((acc, item) => acc + item.qty * item.price, 0) + order.shippingPrice).toFixed(2)}</Col>
                            </Row>
                         </ListGroup.Item>
                         {!order.isPaid && (
