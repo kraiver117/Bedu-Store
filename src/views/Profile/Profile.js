@@ -3,6 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Container, Form , Row, Table } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 import { listMyOrders } from '../../actions/orderActions';
 import {  getUserDetails, updateUserProfile } from '../../actions/userActions';
 import { Message } from '../../components/Alert/Alert';
@@ -118,7 +119,7 @@ export const Profile = ({ history }) => {
                 </Col>
                 <Col md={9}>
                     <h3>Mis pedidos</h3>
-                    { loadingMyOrders ? <Loader /> : errorMyorders ? <Message>{errorMyorders}</Message> : (
+                    { loadingMyOrders ? <Loader /> : errorMyorders ? <Message>{errorMyorders}</Message> : orders.length === 0 ? <Message variant='primary'>No tienes ningún pedido <Link to='/'>Ir a tienda</Link></Message> : (
                         <Table striped bordered hover responsive className='table-sm'>
                             <thead>
                                 <tr>
