@@ -61,7 +61,6 @@ export const OrderDetails = ({ match, history }) => {
    }, [dispatch, history, orderId, userInfo, order, successDeliver, successPay]);
 
    const successPaymentHandler = (paymentResults) => {
-      console.log(paymentResults);
       dispatch(payOrder(orderId, paymentResults));
    }
 
