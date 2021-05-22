@@ -27,7 +27,8 @@ export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) 
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
-            payload: data
+            payload: data.data,
+            pagination: data.pagination
         });
 
     } catch (error) {

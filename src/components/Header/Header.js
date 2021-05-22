@@ -43,7 +43,7 @@ export const Header = () => {
                             Home
                         </Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to='/products'>
+                    <LinkContainer to='/store'>
                         <Nav.Link className="navbar-links">
                             Productos
                         </Nav.Link>
