@@ -18,6 +18,7 @@ import { Users } from '../views/Users/Users';
 import { UpdateUser } from '../views/Users/UpdateUser';
 import { ShoppingCart } from '../views/Cart/ShoppingCart.js';
 import { PageNotFound } from '../views/PageNotFound/PageNotFound.js';
+import { ProductsStore } from '../views/Store/ProductsStore.js';
 
 export const App = () => {
     return (
@@ -36,6 +37,7 @@ export const App = () => {
                     <Route exact path='/order/:id' component={OrderDetails} />
                     <Route exact path='/product/:id' component={ProductDetails} />
                     <Route exact path='/cart/:id?' component={ShoppingCart} />
+                    <Route exact path='/store/:page?' component={ProductsStore} />
                     <Route exact path='/admin/productlist' component={Products} />
                     <Route exact path='/admin/createproduct' component={CreateProduct} />
                     <Route exact path='/admin/product/:id/edit' component={UpdateProduct} />
