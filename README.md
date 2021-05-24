@@ -25,11 +25,17 @@ Para utilizar todas las funcionalidades de nuestro proyecto se recomienda inicia
 
 ## Credenciales Paypal
 
-Para poder probar la funcionalidad de pago por Paypal se deberán utilizar las siguientes credenciales de prueba:
+Para probar la funcionalidad de pago con Paypal se deberá utiliza la siguiente credencial de prueba:
 
 | Correo | Contraseña |
 | ------------- | ------------- |
 | sb-aw2qg3587593@business.example.com | sYI-5*{o |
+
+## Backend
+
+Para el consumo de servicios se utilizó una API creada en node.js retomando el código de la fase anterior.
+
+[Link de repositorio Backend](https://github.com/kraiver117/Bedu-Project-API)
 
 
 ## Demo
