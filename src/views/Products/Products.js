@@ -11,8 +11,8 @@ import { Loader } from '../../components/Loader/Loader';
 import { PRODUCT_DELETE_RESET } from '../../constants/productConstants';
 
 export const Products = ({ history }) => {
-    const productList = useSelector(state => state.productList);
-    const { loading, error, products } = productList;
+    const productList = useSelector(state => state.productsList);
+    const { loading, error, products = [] } = productList;
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;

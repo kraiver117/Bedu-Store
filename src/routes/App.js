@@ -37,7 +37,7 @@ export const App = () => {
                     <Route exact path='/order/:id' component={OrderDetails} />
                     <Route exact path='/product/:id' component={ProductDetails} />
                     <Route exact path='/cart/:id?' component={ShoppingCart} />
-                    <Route exact path='/store' component={ProductsStore} />
+                    <Route exact path='/store/:page?' component={ProductsStore} />
                     <Route exact path='/admin/productlist' component={Products} />
                     <Route exact path='/admin/createproduct' component={CreateProduct} />
                     <Route exact path='/admin/product/:id/edit' component={UpdateProduct} />

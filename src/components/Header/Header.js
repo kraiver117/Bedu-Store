@@ -38,18 +38,10 @@ export const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="m-auto">
-                    <LinkContainer exact to='/'>
-                        <Nav.Link className="navbar-links">
-                            Home
-                        </Nav.Link>
-                    </LinkContainer>
                     <LinkContainer to='/store'>
                         <Nav.Link className="navbar-links">
-                            Productos
+                            Nuestros productos
                         </Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to='/contact'>
-                        <Nav.Link className="navbar-links">Contacto</Nav.Link>
                     </LinkContainer>
                 </Nav>
                 <div className="navbar-right d-flex justify-content-around align-items-center">

@@ -3,6 +3,9 @@ import {
     PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAIL,
     PRODUCT_LIST_REQUEST,
+    PRODUCT_LIST_WITH_QUERY_SUCCESS,
+    PRODUCT_LIST_WITH_QUERY_FAIL,
+    PRODUCT_LIST_WITH_QUERY_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DETAILS_REQUEST,
@@ -17,7 +20,7 @@ import {
     PRODUCT_DELETE_REQUEST
 } from '../constants/productConstants';
 
-export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) => {
+export const listProducts = () => async (dispatch) => {
     try {
         dispatch({
             type: PRODUCT_LIST_REQUEST
@@ -27,13 +30,39 @@ export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) 
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
-            payload: data.data,
-            pagination: data.pagination
+            payload: data.data
         });
 
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_FAIL,
+            payload: error.response && error.response.data.error
+                ? error.response.data.error
+                : error.message
+        });
+    }
+}
+
+export const listProductsWithQuery = (category = '', page = '', limit = '') => async (dispatch) => {
+    if (category === 'Todas') category = '';
+    
+    try {
+        dispatch({
+            type: PRODUCT_LIST_WITH_QUERY_REQUEST
+        });
+
+        const { data } = await beduStoreAPI.get(`/products?${category && `category=${category}`}&limit=${limit.toString()}&page=${page.toString()}`);
+
+        dispatch({
+            type: PRODUCT_LIST_WITH_QUERY_SUCCESS,
+            payload: data.data,
+            pagination: data.pagination,
+            totalPages: data.totalPages
+        });
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_LIST_WITH_QUERY_FAIL,
             payload: error.response && error.response.data.error
                 ? error.response.data.error
                 : error.message
