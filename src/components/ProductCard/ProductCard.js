@@ -10,20 +10,17 @@ export const ProductCard = ({ product }) => {
         <Card className='my-3 mx-2 p-2 rounded'>
             <Card.Header>
                 <Link to={`/product/${product._id}`}>
-                    <Card.Img src={product.image} variant='top' className="bg-black-gradient p-1"/>
+                    <Card.Img src={product.image} variant='top' />
                 </Link>
             </Card.Header>
             <Card.Body>
-                <Card.Title as='h4'>
+                <Card.Title as='h5'>
                     <strong>{product.name}</strong>
                 </Card.Title>
-                <Card.Text as='p' style={{marginBottom: 2}}>
-                    Precio
-                </Card.Text>
-                <Card.Text as='h5' className='orange-color'>
+                <Card.Text className='orange-color font-weight-bold' style={{marginBottom:5, fontSize: 17}}>
                     ${product.price}
                 </Card.Text>
-                <Card.Text as='p'>
+                <Card.Text className='card-description'>
                     {product.description}
                 </Card.Text>
             </Card.Body>
