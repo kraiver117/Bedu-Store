@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Nav, Navbar, NavDropdown, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -16,9 +16,12 @@ import {
 import { logout } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 import './Header.scss';
+import { SearchInput } from '../SearchInput/SearchInput';
+import { searchProducts } from '../../actions/productActions';
 
 export const Header = () => {
     const dispatch = useDispatch();
+    const [searchValue, setSearchValue] = useState('');
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
@@ -26,8 +29,15 @@ export const Header = () => {
     const cart = useSelector(state => state.cart);
     const { cartItems } = cart;
 
+    const searchedProducts = useSelector(state => state.searchProducts);
+    const { products } = searchedProducts;
+
     const logoutHandler = () => {
         dispatch(logout());
+    }
+
+    const searchProduct = (keyword) => {
+        dispatch(searchProducts(keyword));
     }
 
     return (
@@ -40,12 +50,12 @@ export const Header = () => {
                 <Nav className="m-auto">
                     <LinkContainer to='/store'>
                         <Nav.Link className="navbar-links">
-                            Nuestros productos
+                            Productos
                         </Nav.Link>
                     </LinkContainer>
                 </Nav>
                 <div className="navbar-right d-flex justify-content-around align-items-center">
-                    <BsSearch size={18} />
+                    <SearchInput value={ searchValue } onChange={ setSearchValue } onSubmit={ searchProduct } />
                     <Link className='text-dark mx-4' to='/cart'>
                         {
                             cartItems.length > 0 && <Badge className='bg-color-orange text-white' pill>{cartItems.length}</Badge>
