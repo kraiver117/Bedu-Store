@@ -37,7 +37,7 @@ export const Footer = () => {
                 </Row>   
                 <Row>
                     <Col className="footer-box"> 
-                        <div className="d-flex justify-content-md-center">
+                        <div className="justify-content-md-center">
                             <a href="https://www.facebook.com/BeduOrg" target="_blank" rel="noreferrer">
                                 <svg className="mr-5 mx-md-5 social-networks-icon" viewBox="0 0 39 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M39 20.5C39 9.17695 30.2707 0 19.5 0C8.7293 0 0 9.17695 0 20.5C0 31.823 8.7293 41 19.5 41C19.6143 41 19.7285 41 19.8428 40.992V25.0404H15.6533V19.9074H19.8428V16.1277C19.8428 11.7475 22.3869 9.36113 26.1041 9.36113C27.8865 9.36113 29.4176 9.49727 29.8594 9.56133V14.1418H27.3C25.2814 14.1418 24.8854 15.1508 24.8854 16.6322V19.8994H29.7223L29.09 25.0324H24.8854V40.2072C33.0357 37.7488 39 29.8611 39 20.5Z" fill="white"/>
@@ -59,7 +59,7 @@ export const Footer = () => {
                     </Col>
                 </Row>
                 <Row xs={12}>
-                    <Col className="footer-copyright text-left text-md-center px-0">
+                    <Col className="footer-copyright text-left text-md-center text-center px-0">
                         <p>Copyright © 2021. Bedu Store. All Rights Reserved</p>
                     </Col>
                 </Row>
