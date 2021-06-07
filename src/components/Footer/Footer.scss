@@ -71,11 +71,12 @@ $textWhite: #FFF;
         }
 
         path {
-            fill: rgba(24, 20, 20, 0.829);
+            transition: 0.3s;
+            fill: rgb(255, 255, 255);
         }
 
         path:hover{
-            fill: rgb(255, 255, 255);
+            fill: rgba(24, 20, 20, 0.829);
         }
 
         .footer-img{
