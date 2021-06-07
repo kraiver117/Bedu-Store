@@ -21,6 +21,9 @@ import {
     PRODUCT_DELETE_FAIL,
     PRODUCT_DELETE_REQUEST,
     PRODUCT_DELETE_RESET,
+    PRODUCT_SEARCH_REQUEST,
+    PRODUCT_SEARCH_FAIL,
+    PRODUCT_SEARCH_SUCCESS,
 } from '../constants/productConstants';
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -66,6 +69,33 @@ export const productListWithQueryReducer = (state = { products: [] }, action) =>
             }
 
         case PRODUCT_LIST_WITH_QUERY_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        default:
+            return state;
+
+    }
+}
+
+export const searchProductsReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_SEARCH_REQUEST:
+            return {
+                loading: true
+            }
+
+        case PRODUCT_SEARCH_SUCCESS:
+            return {
+                loading: false,
+                products: action.products,
+                page: action.page,
+                pages: action.pages
+            }
+
+        case PRODUCT_SEARCH_FAIL:
             return {
                 loading: false,
                 error: action.payload

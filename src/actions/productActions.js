@@ -17,7 +17,10 @@ import {
     PRODUCT_UPDATE_REQUEST,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_DELETE_FAIL,
-    PRODUCT_DELETE_REQUEST
+    PRODUCT_DELETE_REQUEST,
+    PRODUCT_SEARCH_REQUEST,
+    PRODUCT_SEARCH_SUCCESS,
+    PRODUCT_SEARCH_FAIL
 } from '../constants/productConstants';
 
 export const listProducts = () => async (dispatch) => {
@@ -36,6 +39,31 @@ export const listProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_FAIL,
+            payload: error.response && error.response.data.error
+                ? error.response.data.error
+                : error.message
+        });
+    }
+}
+
+export const searchProducts = (keyword = '', pageNumber = 1) => async (dispatch) => {
+    try {
+        dispatch({
+            type: PRODUCT_SEARCH_REQUEST
+        });
+
+        const { data } = await beduStoreAPI.get(`/products/search/${keyword}?page=${pageNumber}`);
+
+        dispatch({
+            type: PRODUCT_SEARCH_SUCCESS,
+            products: data.products,
+            page: data.page,
+            pages: data.pages
+        });
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_SEARCH_FAIL,
             payload: error.response && error.response.data.error
                 ? error.response.data.error
                 : error.message
