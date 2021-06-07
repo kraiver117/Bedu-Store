@@ -4,7 +4,6 @@ import { Nav, Navbar, NavDropdown, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaShoppingCart } from 'react-icons/fa';
 import { 
-    BsSearch, 
     BsPeopleCircle, 
     BsPersonFill, 
     BsHouseDoorFill, 
@@ -29,9 +28,6 @@ export const Header = () => {
     const cart = useSelector(state => state.cart);
     const { cartItems } = cart;
 
-    const searchedProducts = useSelector(state => state.searchProducts);
-    const { products } = searchedProducts;
-
     const logoutHandler = () => {
         dispatch(logout());
     }
@@ -55,7 +51,11 @@ export const Header = () => {
                     </LinkContainer>
                 </Nav>
                 <div className="navbar-right d-flex justify-content-around align-items-center">
-                    <SearchInput value={ searchValue } onChange={ setSearchValue } onSubmit={ searchProduct } />
+                    <SearchInput 
+                        value={ searchValue } 
+                        onChange={ setSearchValue } 
+                        onSubmit={ searchProduct } 
+                    />
                     <Link className='text-dark mx-4' to='/cart'>
                         {
                             cartItems.length > 0 && <Badge className='bg-color-orange text-white' pill>{cartItems.length}</Badge>
