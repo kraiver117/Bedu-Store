@@ -4,7 +4,11 @@ import { Provider } from 'react-redux';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
+import moment from 'moment'
+import 'moment/locale/es-mx';
 import './styles/index.scss';
+
+moment.locale('es-mx')
 
 ReactDOM.render(
   <Provider store={store}>
