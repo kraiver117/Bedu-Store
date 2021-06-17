@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Message } from '../../components/Alert/Alert';
+import { Loader } from '../../components/Loader/Loader';
 import { resetPassword } from '../../actions/resetPassword';
+import { USER_RESET_PASSWORD_RESET } from '../../constants/resetPasswordConstants';
 
 export const ResetPassword = () => {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState(false);
 
+    const resetPasswordState = useSelector(state => state.resetPassword);
+    const { loading, successMessage, errorMessage} = resetPasswordState;
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({ type: USER_RESET_PASSWORD_RESET });
+    }, [dispatch]);
 
     const handleChangePassword = (e) => {
         e.preventDefault();
@@ -17,7 +26,7 @@ export const ResetPassword = () => {
         if (!email) {
             setEmailError(true);
         } else {
-            dispatch(resetPassword);
+            dispatch(resetPassword(email));
         }
     }
 
@@ -25,7 +34,7 @@ export const ResetPassword = () => {
         <Container>
             <Form className='form' onSubmit={handleChangePassword}>
                 <Form.Group>
-                    <h4 className='text-center my-4'>Reestablecer Contraseña</h4>
+                    <h4 className='text-center my-4'>Restablecer Contraseña</h4>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Correo electrónico</Form.Label>
@@ -36,15 +45,17 @@ export const ResetPassword = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         isInvalid={emailError}
                         onFocus={() => setEmailError(false)}
+                        disabled={successMessage}
                     />
                     <Form.Control.Feedback type="invalid">
                         Por favor ingresa tu correo electrónico
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Message variant='success'>Te hemos enviado un correo electrónico, revisa los detalles para reestablecer tu contraseña</Message>
-                <Message variant='danger'>No se pudo enviar el correo electrónico, intenta más tarde</Message>
+                { loading && <Loader /> }
+                { errorMessage && <Message variant='danger' dismissible>{errorMessage}</Message> }
+                { successMessage && <Message variant='success' dismissible>{successMessage}</Message>}
                 <Form.Group className="text-center">
-                    <Button type="submit" className="button-orange mt-4">
+                    <Button type="submit" className="button-orange mt-4" disabled={successMessage}>
                         ENVIAR
                     </Button>
                 </Form.Group>
