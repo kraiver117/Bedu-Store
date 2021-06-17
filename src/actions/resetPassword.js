@@ -19,23 +19,24 @@ export const resetPassword = (email) => async (dispatch) => {
             }
         }
 
-        const { data } = await beduStoreAPI.post(
-            '/auth/login',
-            { email, newPassword },
+        const { data } = await beduStoreAPI.put(
+            '/users/resetPassword',
+            { email, password: newPassword },
             config
         );
 
         sendEmail(email, from_name, newPassword);
 
         dispatch({
-            type: USER_RESET_PASSWORD_SUCCESS
+            type: USER_RESET_PASSWORD_SUCCESS,
+            payload: data.message
         });
 
     } catch (error) {
         dispatch({
             type: USER_RESET_PASSWORD_FAIL,
-            payload: error.response && error.response.data.message
-            ? error.response.data.message
+            payload: error.response && error.response.data.error
+            ? error.response.data.error
             : error.message
         });
     }
