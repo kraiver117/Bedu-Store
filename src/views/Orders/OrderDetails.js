@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, ListGroup, Image, Button } from 'react-boots
 import { PayPalButton } from 'react-paypal-button-v2';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { deliverOrder, getOrderDetails, payOrder } from '../../actions/orderActions';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
@@ -87,7 +88,7 @@ export const OrderDetails = ({ match, history }) => {
                         {
                            order.isDelivered 
                               ? <Message textPosition='left' variant='success'>
-                                 Entregado el {order.deliveredAt.substring(0,10)}
+                                 Entregado el {moment(order.deliveredAt).format('LL')}
                               </Message>
                               : <Message textPosition='left' variant='danger'>
                                  No entregado
@@ -100,7 +101,7 @@ export const OrderDetails = ({ match, history }) => {
                         {
                            order.isPaid
                               ? <Message textPosition='left' variant='success'>
-                                 Pagado el {order.paidAt.substring(0,10)}
+                                 Pagado el {moment(order.paidAt).format('LL')}
                               </Message>
                               : <Message textPosition='left' variant='danger'>
                                  No pagado

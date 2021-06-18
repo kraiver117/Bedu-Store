@@ -3,6 +3,8 @@ import { Button, Container, Table } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
+import moment from 'moment';
+
 import { listOrders } from '../../actions/orderActions';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
@@ -50,19 +52,19 @@ export const Orders = ({ history }) => {
                                     <tr key={order._id}>
                                         <td>{order._id}</td>
                                         <td>{order.user.fullName}</td>
-                                        <td>{order.createdAt.substring(0,10)}</td>
+                                        <td>{ moment(order.createdAt).format('LL')}</td>
                                         <td>${order.totalPrice.toFixed(2)}</td>
                                         <td>
                                             {
                                                 order.isPaid
-                                                ? (order.paidAt.substring(0,10))
+                                                ? (moment(order.paidAt).format('LL') )
                                                 : (<FaTimes color='red' />)
                                             }
                                         </td>
                                         <td>
                                             {
                                                 order.isDelivered
-                                                ? (order.deliveredAt.substring(0,10))
+                                                ? (moment(order.deliveredAt).format('LL') )
                                                 : (<FaTimes color='red' />)
                                             }
                                         </td>

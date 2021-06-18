@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Container, Form , Row, Table } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { listMyOrders } from '../../actions/orderActions';
 import {  getUserDetails, updateUserProfile } from '../../actions/userActions';
 import { Message } from '../../components/Alert/Alert';
@@ -135,12 +136,12 @@ export const Profile = ({ history }) => {
                                 {orders.map(order => (
                                     <tr key={order._id}>
                                         <td>{order._id}</td>
-                                        <td>{order.createdAt.substring(0,10)}</td>
+                                        <td>{moment(order.createdAt).format('LL')} </td>
                                         <td>${order.totalPrice.toFixed(2)}</td>
-                                        <td>{order.isPaid ? (order.paidAt.substring(0,10)) : (
+                                        <td>{order.isPaid ? (moment(order.createdAt).format('LL')) : (
                                             <FaTimes color='red' />
                                         )}</td>
-                                        <td>{order.isDelivered ? (order.deliveredAt.substring(0,10)) : (
+                                        <td>{order.isDelivered ? (moment(order.createdAt).format('LL')) : (
                                             <FaTimes color='red' />
                                         )}</td>
                                         <td>
