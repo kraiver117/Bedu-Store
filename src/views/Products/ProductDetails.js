@@ -14,7 +14,7 @@ import './ProductDetails.scss';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../../constants/productConstants';
 
 export const ProductDetails = ({ history, match }) => {
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
     const [rating, setRating] = useState(0);
     const [title, setTitle] = useState('');
     const [comment, setComment] = useState('');
