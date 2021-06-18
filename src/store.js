@@ -6,8 +6,13 @@ import thunk from 'redux-thunk';
 import {
     userLoginReducer,
     userDetailsReducer,
-    userUpdateProfileReducer
+    userUpdateProfileReducer,
 } from './reducers/userReducers';
+
+//--------RenewPassword-------//
+import {
+    resetPasswordReducer
+} from './reducers/resetPasswordReducer';
 
 //-------Cart Reducers--------//
 import {
@@ -41,6 +46,7 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    user: userUpdateProfileReducer,
     cart: cartReducer,
     searchProducts: searchProductsReducer,
     productsList: productListReducer,
@@ -55,7 +61,8 @@ const reducer = combineReducers({
     listMyOrders: listMyOrdersReducer,
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
-    orderDeliver: orderDeliverReducer
+    orderDeliver: orderDeliverReducer,
+    resetPassword: resetPasswordReducer
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') 
