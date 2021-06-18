@@ -20,6 +20,7 @@ import { ShoppingCart } from '../views/Cart/ShoppingCart.js';
 import { PageNotFound } from '../views/PageNotFound/PageNotFound.js';
 import { ProductsStore } from '../views/Store/ProductsStore.js';
 import { SearchResults } from '../views/SearchResults/SearchResults.js';
+import { ResetPassword } from '../views/ResetPassword/ResetPassword.js';
 
 export const App = () => {
     return (
@@ -30,6 +31,7 @@ export const App = () => {
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/profile' component={Profile} />
+                    <Route exact path='/renewPassword' component={ResetPassword} />
                     <Route exact path='/users' component={Users} />
                     <Route exact path='/admin/user/:id/edit' component={UpdateUser} />
                     <Route exact path='/address' component={Address} />

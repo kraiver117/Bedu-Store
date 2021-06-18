@@ -69,7 +69,7 @@ export const Login = ({ history, location }) => {
                     <Link to="/register"> Registrate</Link>
                 </div>
                 <div className="text-center my-4 password-forgotten">
-                    <Link to="/forgotPassword">¿Olvidaste tu contraseña?</Link>
+                    <Link to="/renewPassword">¿Olvidaste tu contraseña?</Link>
                 </div>
             </Form>
         </Container>
