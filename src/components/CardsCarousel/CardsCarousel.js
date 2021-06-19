@@ -14,12 +14,39 @@ export const CardsCarousel = ({ title }) => {
 
     const settings = {
         className: "center",
-        centerMode: true,
+        centerMode: width > 500 ? true : false,
         dots: true,
         infinite: true,
-        centerPadding: (width > 700 ? '230px' : width > 500 ? '180px' : width > 400 ? '280px' : width < 281 ? '100px' : '200px'),
-        slidesToShow: (width > 500 ? 2 : 1),
-        slidesToScroll: 1
+        centerPadding: '225px',
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 2,
+                    centerPadding: '280px'
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerPadding: '180px'
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false
+                }
+            }
+        ]
     }
     
     return (

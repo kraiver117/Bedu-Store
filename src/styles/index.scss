@@ -57,6 +57,12 @@ code {
 
 .bg-color-orange {
   background-color: #FF5F29;
+  transition: all 0.2s ease-in-out;
+}
+
+.bg-color-orange:hover {
+  background-color: #FF5F29;
+  opacity: 0.8;
 }
 
 .secondary-color {

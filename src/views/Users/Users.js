@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Modal, Button } from 'react-bootstrap';
 import { MDBDataTableV5 } from 'mdbreact';
+import { FaTimes, FaCheck } from 'react-icons/fa';
 import { beduStoreAPI } from '../../api/beduStoreAPI';
 import { Message } from '../../components/Alert/Alert';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
 import { Loader } from '../../components/Loader/Loader';
@@ -42,7 +43,7 @@ export const Users = ({history}) => {
         .then((response) => {
           let users = response.data.data;
           for (let i = 0; i < users.length; i++) {
-            users[i].role = users[i].role === "user" ? <div className="w-100 text-center"><i className="icon-admin bi bi-x"></i></div>: <div className="w-100 text-center"><i className="icon-admin bi bi-check2"></i></div>;
+            users[i].role = users[i].role === "user" ? <div className="w-100 text-center"><FaTimes color='red' /></div>: <div className="w-100 text-center"><FaCheck color='green' /></div>;
             users[i].edit = <div className="d-flex justify-content-around">
                           <Link className="btn btn-primary btn-sm" to={`admin/user/${users[i]._id}/edit`}>
                             <i className="bi bi-pencil-square"></i>

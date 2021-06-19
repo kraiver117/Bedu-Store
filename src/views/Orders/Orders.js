@@ -39,10 +39,10 @@ export const Orders = ({ history }) => {
                             <tr>
                                 <th>Id</th>
                                 <th>Usuario</th>
-                                <th>Fecha</th>
-                                <th>Total</th>
+                                <th>Solicitado</th>
                                 <th>Pagado</th>
                                 <th>Entregado</th>
+                                <th>Total</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -53,7 +53,6 @@ export const Orders = ({ history }) => {
                                         <td>{order._id}</td>
                                         <td>{order.user.fullName}</td>
                                         <td>{ moment(order.createdAt).format('LL')}</td>
-                                        <td>${order.totalPrice.toFixed(2)}</td>
                                         <td>
                                             {
                                                 order.isPaid
@@ -68,6 +67,7 @@ export const Orders = ({ history }) => {
                                                 : (<FaTimes color='red' />)
                                             }
                                         </td>
+                                        <td>${order.totalPrice.toFixed(2)}</td>
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>
                                                 <Button variant='light' className='btn-sm'>
