@@ -7,9 +7,9 @@ export const Home = () => {
     return (
         <>
             <MainCarousel />
-            <CardsCarousel title='Productos más comprados' />
+            <CardsCarousel title='PRODUCTOS MÁS COMPRADOS' />
             <SocialMedia />
-            <CardsCarousel title='Nuestros Productos' />
+            <CardsCarousel title='NUESTROS PRODUCTOS' />
         </>
     )
 }
