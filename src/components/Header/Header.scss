@@ -29,3 +29,16 @@
  .p-navbar {
    padding: 8px 100px;
  }
+
+ .w-80 {
+   width: 80% !important;
+ }
+ .products-category {
+   width: 100%;
+ }
+
+ @media (min-width: 768px) { 
+    .products-category {
+      width: 25%;
+    }
+  }
