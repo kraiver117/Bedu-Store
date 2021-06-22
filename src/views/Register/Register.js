@@ -51,7 +51,6 @@ export const Register = ( {history, location} ) => {
     }
     return (
         <Container>
-            { loading && <Loader /> }
             <Form className="form" onSubmit={registerHandler}>
                 <Form.Group controlId="formBasicEmail">
                     <h4 className="text-center my-4">Registrar</h4>
@@ -75,7 +74,7 @@ export const Register = ( {history, location} ) => {
                     />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Correo Electrónico*</Form.Label>
+                    <Form.Label>Correo Electrónico</Form.Label>
                     <Form.Control type="email"
                         onChange={(e) => {
                             setEmail(e.target.value);
@@ -93,6 +92,7 @@ export const Register = ( {history, location} ) => {
                 </Form.Group>
                 { error && <Message variant="danger">{error}</Message> }
                 { success && <Message variant="success">{success}</Message> }
+                { loading && <Loader size={100} margin={1} /> }
                 <Form.Group className="text-center">
                     <Button type="submit" className="button-orange mt-4">
                         Registrarse

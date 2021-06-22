@@ -10,6 +10,7 @@ import { login } from '../../actions/userActions';
 import { Message } from '../../components/Alert/Alert';
 import { Loader } from '../../components/Loader/Loader';
 import '../../styles/form.scss';
+import { USER_LOGIN_RESET } from '../../constants/userConstants';
 
 export const Login = ({ history, location }) => {
     const [email, setEmail] = useState('');
@@ -23,10 +24,11 @@ export const Login = ({ history, location }) => {
     const redirect = location.search ? location.search.split('=')[1] : '/';
 
     useEffect(() => {
+        dispatch({ type: USER_LOGIN_RESET });
         if (userInfo) {
             history.push(redirect);
         }
-    }, [history, userInfo, redirect]);
+    }, [history, userInfo, redirect, dispatch]);
 
     const loginHandler = (e) => {
         e.preventDefault();
@@ -35,7 +37,6 @@ export const Login = ({ history, location }) => {
 
     return (
         <Container>
-            { loading && <Loader /> }
             <Form className="form" onSubmit={loginHandler}>
                 <Form.Group controlId="formBasicEmail">
                     <h4 className="text-center my-4">Iniciar Sesión</h4>
@@ -59,6 +60,7 @@ export const Login = ({ history, location }) => {
                     />
                 </Form.Group>
                 { error && <Message variant="danger">{error}</Message> }
+                { loading && <Loader size={100} margin={1} /> }
                 <Form.Group className="text-center">
                     <Button type="submit" className="button-orange mt-4">
                         INICIAR SESIÓN

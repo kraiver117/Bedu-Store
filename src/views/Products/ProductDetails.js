@@ -79,7 +79,7 @@ export const ProductDetails = ({ history, match }) => {
             <Link className='btn btn-light back-btn my-4' to='/'>
                 Regresar
             </Link>
-            { loading ? <Loader className='d-flex' position='block' marginY='100px' /> : error ? <Message variant="danger">{error}</Message> :
+            { loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> :
                 (
                     <>
                         <Row className='my-1'>
