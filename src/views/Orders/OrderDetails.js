@@ -40,7 +40,7 @@ export const OrderDetails = ({ match, history }) => {
          const { data: clientId } = await beduStoreAPI.get('/config/paypal');
             const script = document.createElement('script');
             script.type = 'text/javascript';
-            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+            script.src = `https://www.paypal.com/sdk/js?currency=MXN&client-id=${clientId}`;
             script.async = true;
             script.onload = () => {
                setSdkReady(true)
@@ -162,9 +162,10 @@ export const OrderDetails = ({ match, history }) => {
                         </ListGroup.Item>
                         {!order.isPaid && (
                            <ListGroup.Item>
-                              {loadingPay && <Loader />}
-                              {!sdkReady ? <Loader /> : (
+                              {loadingPay && <Loader size={100} margin={40} />}
+                              {!sdkReady ? <Loader size={100} margin={40} /> : (
                                  <PayPalButton 
+                                    currency='MXN'
                                     amount={order.totalPrice} 
                                     onSuccess={successPaymentHandler}
                                  />
