@@ -7,6 +7,8 @@ import { Message } from '../Alert/Alert';
 import './MakeOrder.scss';
 import { Link } from 'react-router-dom';
 import { createOrder } from '../../actions/orderActions';
+import { removeAllItemsFromCart } from '../../actions/cartActions';
+import { ORDER_CREATE_RESET } from '../../constants/orderConstants';
 
 export const MakeOrder = ({ history }) => {
    const dispatch = useDispatch();
@@ -16,13 +18,14 @@ export const MakeOrder = ({ history }) => {
    const orderCreate = useSelector(state => state.orderCreate);
    const { order, success, error } = orderCreate;
 
-
    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
    cart.shippingPrice = 150;
    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice)).toFixed(2);
 
    useEffect(() => {
       if (success) {
+         dispatch(removeAllItemsFromCart());
+         dispatch({ type: ORDER_CREATE_RESET });
          history.push(`/order/${order._id}`);
       }
       // eslint-disable-next-line
