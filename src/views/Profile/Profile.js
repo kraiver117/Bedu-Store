@@ -125,25 +125,25 @@ export const Profile = ({ history }) => {
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Solicitud</th>
-                                    <th>Total</th>
+                                    <th>Solicitado</th>
                                     <th>Pagado</th>
                                     <th>Entregado</th>
+                                    <th>Total</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {orders.map(order => (
                                     <tr key={order._id}>
-                                        <td>{order._id}</td>
+                                        <td>{order._id.substring(0, 12)}</td>
                                         <td>{moment(order.createdAt).format('LL')} </td>
-                                        <td>${order.totalPrice.toFixed(2)}</td>
                                         <td>{order.isPaid ? (moment(order.createdAt).format('LL')) : (
                                             <FaTimes color='red' />
                                         )}</td>
                                         <td>{order.isDelivered ? (moment(order.createdAt).format('LL')) : (
                                             <FaTimes color='red' />
                                         )}</td>
+                                        <td>${order.totalPrice.toFixed(2)}</td>
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>
                                                 <Button className='btn-sm' variant='light'>Detalles</Button>

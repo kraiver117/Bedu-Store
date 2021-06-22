@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Rating } from '../Rating/Rating';
 import './ProductCard.scss';
 
 export const ProductCard = ({ product }) => {
@@ -17,7 +18,11 @@ export const ProductCard = ({ product }) => {
                 <Card.Title as='h5'>
                     <strong>{product.name}</strong>
                 </Card.Title>
-                <Card.Text className='orange-color font-weight-bold' style={{marginBottom:5, fontSize: 17}}>
+                <div className='d-flex'>
+                    <Rating value={product.rating} display='block' />
+                    <p className='text-muted p-0 m-0 ml-1'>{`(${product.numReviews})`}</p>
+                </div>
+                <Card.Text className='orange-color font-weight-bold' style={{margin: '5px 0px', fontSize: 17}}>
                     ${product.price}
                 </Card.Text>
                 <Card.Text className='card-description'>
@@ -45,6 +50,7 @@ ProductCard.propTypes = {
         _id: PropTypes.string,
         name: PropTypes.string,
         price: PropTypes.number,
+        rating: PropTypes.number,
         countInStock: PropTypes.number,
         image: PropTypes.string,
         description: PropTypes.string

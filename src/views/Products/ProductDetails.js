@@ -14,7 +14,7 @@ import './ProductDetails.scss';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../../constants/productConstants';
 
 export const ProductDetails = ({ history, match }) => {
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
     const [rating, setRating] = useState(0);
     const [title, setTitle] = useState('');
     const [comment, setComment] = useState('');
@@ -79,7 +79,7 @@ export const ProductDetails = ({ history, match }) => {
             <Link className='btn btn-light back-btn my-4' to='/'>
                 Regresar
             </Link>
-            { loading ? <Loader className='d-flex' position='block' marginY='100px' /> : error ? <Message variant="danger">{error}</Message> :
+            { loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> :
                 (
                     <>
                         <Row className='my-1'>

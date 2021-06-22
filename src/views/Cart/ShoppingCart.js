@@ -35,7 +35,7 @@ export const ShoppingCart = ({ match, location, history }) => {
         <Container className='my-4'>
             <Row>
                 <Col md={8}>
-                    <h3>Carrito de compras</h3>
+                    <h3 className='text-center'>Carrito de compras</h3>
                     { cartItems.length === 0
                         ?
                             <Message variant='primary'>
@@ -45,17 +45,17 @@ export const ShoppingCart = ({ match, location, history }) => {
                             (<ListGroup variant='flush'>
                                 {cartItems.map(item => (
                                     <ListGroup.Item key={item.product}>
-                                        <Row className='d-flex align-items-center'>
-                                            <Col md={2}>
+                                        <Row className='d-flex align-items-center justify-content-center'>
+                                            <Col xs={12} md={2}>
                                                 <Image src={item.image} alt={item.name} fluid rounded/>
                                             </Col>
-                                            <Col md={3}>
+                                            <Col xs={12} md={3} className='text-center'>
                                                 <Link className='text-dark' to={`/product/${item.product}`}>{item.name}</Link>
                                             </Col>
-                                            <Col md={2}>
+                                            <Col xs={3} md={2}>
                                                 ${item.price.toFixed(2)}
                                             </Col>
-                                            <Col md={3}>
+                                            <Col xs={5} md={3}>
                                                 <Form.Control 
                                                     as='select' 
                                                     value={item.qty} 
@@ -68,9 +68,9 @@ export const ShoppingCart = ({ match, location, history }) => {
                                                     ))}
                                                 </Form.Control>
                                             </Col>
-                                            <Col md={2}>
-                                                <Button type='button' variant='light' onClick={() => removeFormCartHandler(item.product)}>
-                                                        <BsTrashFill />
+                                            <Col xs={3} md={2}>
+                                                <Button type='button' className='bg-color-orange' variant='light' onClick={() => removeFormCartHandler(item.product)}>
+                                                        <BsTrashFill color='#fff' />
                                                 </Button>
                                             </Col>
                                         </Row>
