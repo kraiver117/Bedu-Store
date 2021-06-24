@@ -51,7 +51,7 @@ export const ResetPassword = () => {
                         Por favor ingresa tu correo electrónico
                     </Form.Control.Feedback>
                 </Form.Group>
-                { loading && <Loader /> }
+                { loading && <Loader size={100} margin={1} /> }
                 { errorMessage && <Message variant='danger' dismissible>{errorMessage}</Message> }
                 { successMessage && <Message variant='success' dismissible>{successMessage}</Message>}
                 <Form.Group className="text-center">
