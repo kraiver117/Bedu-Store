@@ -19,9 +19,12 @@ import {
     ORDER_DELIVER_SUCCESS,
     ORDER_DELIVER_FAIL
 } from '../constants/orderConstants';
+import { createOrderEmail } from '../services/emailJS/order/createOrderEmail';
 
-export const createOrder = (order) => async (dispatch, getState) => {
+export const createOrder = (order, userInfo) => async (dispatch, getState) => {
     try {
+        const fromName = 'Bedu Store';
+
         dispatch({
             type: ORDER_CREATE_REQUEST,
         });
@@ -41,6 +44,8 @@ export const createOrder = (order) => async (dispatch, getState) => {
             type: ORDER_CREATE_SUCCESS,
             payload: data
         });
+
+        createOrderEmail(data._id, userInfo, fromName, order);
 
     } catch (error) {
         dispatch({

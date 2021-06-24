@@ -6,12 +6,14 @@ Nuestro proyecto se basa en el diseño y desarrollo de un e-commerce con la tem�
 - Funcionalidad completa del carrito de compras
 - Perfil de usuario con pedidos
 - Página de detalles de producto
+- Reseña de productos
 - CRUD de productos (Admin)
 - CRUD de usuarios (Admin)
 - CRUD de pedidos (Admin)
 - Marcar pedido como entregado (Admin)
 - Proceso de pago (dirección, método de pago, realizar pedido)
-- Pago por Paypal y tarjeta de crédito integrados.
+- Pago por Paypal integrado
+- Sevicio de correo electrónico integrado (emailjs)
 
 ## Credenciales 
 

@@ -4,7 +4,7 @@ import {
     USER_RESET_PASSWORD_FAIL
 } from '../constants/resetPasswordConstants';
 import { beduStoreAPI } from '../api/beduStoreAPI';
-import { sendEmail } from '../services/emailJS/email';
+import { resetPasswordEmail } from '../services/emailJS/resetPassword/resetPasswordEmail';
 
 export const resetPassword = (email) => async (dispatch) => {
     try {
@@ -25,7 +25,7 @@ export const resetPassword = (email) => async (dispatch) => {
             config
         );
 
-        sendEmail(email, from_name, newPassword);
+        resetPasswordEmail(email, from_name, newPassword);
 
         dispatch({
             type: USER_RESET_PASSWORD_SUCCESS,
