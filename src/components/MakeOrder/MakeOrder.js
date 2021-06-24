@@ -15,6 +15,9 @@ export const MakeOrder = ({ history }) => {
 
    const cart = useSelector(state => state.cart);
 
+   const userLogged = useSelector(state => state.userLogin);
+   const { userInfo } = userLogged;
+
    const orderCreate = useSelector(state => state.orderCreate);
    const { order, success, error } = orderCreate;
 
@@ -39,7 +42,7 @@ export const MakeOrder = ({ history }) => {
          itemsPrice: cart.itemsPrice,
          shippingPrice: cart.shippingPrice,
          totalPrice: cart.totalPrice
-      }));
+      }, userInfo));
    }
    
    return (
