@@ -92,7 +92,7 @@ export const ProductDetails = ({ history, match }) => {
                                         <h5>{product.name}</h5>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <Rating value={product.rating || 0} text={`${product.numReviews} reseñas`} />
+                                        <Rating value={product.rating || 0} text={`(${product.rating && product.rating.toFixed(1)}) con  ${product.numReviews} ${product.numReviews === 1 ? 'reseñas' : 'reseña'}`} />
                                     </ListGroup.Item>
                                     <ListGroup.Item>
                                         <span className='orange-color font-weight-bold'> Descripción: </span>{product.description}
