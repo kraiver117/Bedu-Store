@@ -7,16 +7,10 @@ import { Loader } from '../../components/Loader/Loader';
 import { PaginationComponent as Pagination } from '../../components/Pagination/PaginationComponent';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import qs from "qs";
-// const categories = [
-//     "Todas",
-//     "Playera",
-//     "Mochila",
-//     "Taza"
-// ]
 
 export const ProductsStore = ({ match, location }) => {
     const dispatch = useDispatch();
-    let pageNumber = match.params.page || 1;
+    let pageNumber = Number(match.params.page) || 1;
     const { category = '' } = qs.parse(location.search, {
         ignoreQueryPrefix: true
     });
@@ -25,7 +19,12 @@ export const ProductsStore = ({ match, location }) => {
     const { products = [], loading, error, totalPages } = productListState;
 
     useEffect(() => {
-        dispatch(listProductsWithQuery(category, pageNumber, 3));
+        if(!category || category === 'Todas'){
+            dispatch(listProductsWithQuery('', pageNumber, 3));
+        } else {
+            dispatch(listProductsWithQuery(category, pageNumber, 3));
+        }
+
     }, [dispatch, pageNumber, category]);
 
     // const handleFilterCategory = (category) => {
@@ -58,7 +57,7 @@ export const ProductsStore = ({ match, location }) => {
                     ))
                 }
             </Row>
-            <Pagination page={pageNumber} totalPages={ totalPages } center />
+            <Pagination page={pageNumber} totalPages={ totalPages } category={category} center />
         </Container>
     );
 }
