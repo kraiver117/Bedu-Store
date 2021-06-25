@@ -13,15 +13,24 @@ import {
     BsInboxFill
 } from 'react-icons/bs';
 import { logout } from '../../actions/userActions';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 import { SearchInput } from '../SearchInput/SearchInput';
 import { searchProducts } from '../../actions/productActions';
 
-export const Header = () => {
+const categories = [
+    "Todas",
+    "Playera",
+    "Mochila",
+    "Taza",
+    "Gorra",
+    "Hoddie",
+    "Libreta"
+]
 
-    
+export const Header = () => {
     const dispatch = useDispatch();
+    const { pathname } = useLocation();
     const [searchValue, setSearchValue] = useState('');
 
     const userLogin = useSelector(state => state.userLogin);
@@ -155,30 +164,23 @@ export const Header = () => {
                 }
             </Navbar.Collapse>
         </Navbar>
-        <div className="bg-light px-0">
-            <div className="row row-cols-4 py-2 mx-auto products-category">
-                <div className="text-center font-weight-bolder">
-                    <Link to='/store?category=Todas' className="text-dark">
-                        Todas   
-                    </Link>
+        {
+            (pathname.includes('/store') || pathname === '/') && (
+                <div className="bg-light px-0">
+                    <div className="row row-cols-12 py-2 mx-auto products-category">
+                        {
+                            categories.map((category, index) => (
+                                <div className="text-center font-weight-bolder mx-2" key={index}>
+                                    <Link to={`/store?category=${category}`} className="text-dark">
+                                        {category}   
+                                    </Link>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-                <div className="text-center font-weight-bolder">
-                    <Link to='/store?category=Playera' className="text-dark">
-                        Playera
-                    </Link>
-                </div>
-                <div className="text-center font-weight-bolder">
-                    <Link to='/store?category=Mochila' className="text-dark">
-                        Mochila
-                    </Link>
-                </div>
-                <div className="text-center font-weight-bolder">
-                    <Link to='/store?category=Taza' className="text-dark">
-                        Taza
-                    </Link>
-                </div>
-            </div>
-        </div>
+            )
+        }
       </div>
     );
 };
