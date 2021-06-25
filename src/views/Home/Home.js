@@ -7,7 +7,6 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 export const Home = () => {
 
     const { width } = useWindowDimensions();
-    console.log(width)
 
     return (
         <>
