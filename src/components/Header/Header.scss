@@ -27,7 +27,7 @@
  }
 
  .p-navbar {
-   padding: 8px 100px;
+   padding: 8px 24px;
  }
 
  .w-80 {
@@ -37,7 +37,12 @@
    width: 100%;
  }
 
- @media (min-width: 768px) { 
+  @media (min-width: 768px) { 
+    .p-navbar {
+      padding: 8px 100px;
+    }
+  } 
+  @media (min-width: 991px) { 
     .products-category {
       width: 25%;
     }

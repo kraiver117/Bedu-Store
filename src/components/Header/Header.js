@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Nav, Navbar, NavDropdown, Badge, Container, FormControl, Button, InputGroup } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Badge} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaShoppingCart } from 'react-icons/fa';
 import { 
@@ -10,18 +10,16 @@ import {
     BsPeopleFill, 
     BsBoxArrowRight, 
     BsReverseLayoutTextSidebarReverse, 
-    BsInboxFill,
-    BsSearch
+    BsInboxFill
 } from 'react-icons/bs';
 import { logout } from '../../actions/userActions';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { SearchInput } from '../SearchInput/SearchInput';
 import { searchProducts } from '../../actions/productActions';
-import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
-    const location = useLocation();
+
     
     const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
@@ -55,24 +53,23 @@ export const Header = () => {
                         onSubmit={ searchProduct } 
                     />
                 </Nav>
-                <div className="d-flex justify-content-around">
-                    <Link className='text-dark mx-4' to='/cart'>
+                <div className="d-flex flex-column align-items-start flex-lg-row justify-content-around align-items-lg-center">
+                    <Link className='text-dark mx-lg-4' to='/cart'>
                         {
                             cartItems.length > 0 && <Badge className='bg-color-orange text-white' pill>{cartItems.length}</Badge>
                         }
                         <FaShoppingCart size={20}/>    
                     </Link>
                     { 
-                     !userInfo ?
-                        <div>
-                        <Link to='/login' className="pr-2 border-right text-dark font-weight-bolder">
-                            Iniciar sesión
-                        </Link>
-                        <Link to='/register' className="ml-2 text-dark font-weight-bolder">
-                            Registrarse
-                        </Link>
+                     !userInfo &&
+                        <div className="d-flex align-items-center">
+                            <Link to='/login' className="pr-2 border-right text-dark font-weight-bolder my-2 my-lg-0">
+                                Iniciar sesión
+                            </Link>
+                            <Link to='/register' className="pl-2 text-dark font-weight-bolder my-2 my-lg-0">
+                                Registrarse
+                            </Link>
                         </div>
-                        : ''
                     }
                 </div>
                 {

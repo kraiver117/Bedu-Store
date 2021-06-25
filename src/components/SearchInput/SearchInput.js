@@ -33,21 +33,19 @@ export const SearchInput = () => {
     }
 
     return (
-        <>
         <Form className="mx-auto form-search" onSubmit={ submitHandler }>
-        <InputGroup className="">
-            <FormControl
-                className="search-input"
-                placeholder="Buscar productos"                
-                aria-label="Buscar productos"
-                aria-describedby="basic-addon2"
-                value={ keyword } onChange={ handleOnChange } onSubmit={ submitHandler }
-            />
-            <Button variant="outline-secondary" id="button-addon2" className="search-button-2 bg-white">
-                <BsSearch size={18}></BsSearch>
-            </Button>
-        </InputGroup> 
+            <InputGroup className="">
+                <FormControl
+                    className="search-input"
+                    placeholder="Buscar productos"                
+                    aria-label="Buscar productos"
+                    aria-describedby="basic-addon2"
+                    value={ keyword } onChange={ handleOnChange } onSubmit={ submitHandler }
+                />
+                <Button variant="outline-secondary" id="button-addon2" className="search-button-2 bg-white">
+                    <BsSearch size={18}></BsSearch>
+                </Button>
+            </InputGroup> 
         </Form>
-        </>
     );
 }
