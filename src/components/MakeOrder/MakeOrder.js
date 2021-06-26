@@ -47,17 +47,17 @@ export const MakeOrder = ({ history }) => {
                <ListGroup variant='flush'>
                   <ListGroup.Item>
                      <h2> Dirección </h2>
-                     <p><strong>Dirección:</strong> {cart.shippingPrice.address} 
+                     <span className = "orange_text"><strong>Dirección: </strong></span> 
+                        {cart.shippingAddress.address}{' '}
                         {cart.shippingAddress.city}{' '}
                         {cart.shippingAddress.postalCode}{' '}  
                         {cart.shippingAddress.country} 
-                     </p>
                   </ListGroup.Item>
                   <ListGroup.Item>
                      <h2> Método de pago </h2>
-                     <strong>
+                     <span className = "orange_text"><strong>
                         Método:
-                     </strong> 
+                     </strong> </span>
                      {' '}{cart.paymentMethod}
                   </ListGroup.Item>
                   <ListGroup.Item>
@@ -100,19 +100,19 @@ export const MakeOrder = ({ history }) => {
                      </ListGroup.Item>
                      <ListGroup.Item>
                         <Row>
-                           <Col>Productos</Col>
+                           <Col> <span className = "orange_text"> <strong>Productos</strong></span></Col>
                            <Col>${cart.itemsPrice.toFixed(2)}</Col>
                         </Row>
                      </ListGroup.Item>
                      <ListGroup.Item>
                         <Row>
-                           <Col>Envío</Col>
+                           <Col> <span className = "orange_text"> <strong>Envío</strong></span></Col>
                            <Col>${cart.shippingPrice.toFixed(2)}</Col>
                         </Row>
                      </ListGroup.Item>
                      <ListGroup.Item>
                         <Row>
-                           <Col>Total</Col>
+                           <Col> <span className = "orange_text"> <strong>Total</strong></span></Col>
                            <Col>${cart.totalPrice}</Col>
                         </Row>
                      </ListGroup.Item>
