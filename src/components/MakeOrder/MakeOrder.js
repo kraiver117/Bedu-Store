@@ -47,7 +47,7 @@ export const MakeOrder = ({ history }) => {
                <ListGroup variant='flush'>
                   <ListGroup.Item>
                      <h2> Dirección </h2>
-                     <span className = "orange_text"><strong>Dirección: </strong></span> 
+                     <strong>Dirección: </strong> 
                         {cart.shippingAddress.address}{' '}
                         {cart.shippingAddress.city}{' '}
                         {cart.shippingAddress.postalCode}{' '}  
@@ -55,9 +55,9 @@ export const MakeOrder = ({ history }) => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                      <h2> Método de pago </h2>
-                     <span className = "orange_text"><strong>
+                     <strong>
                         Método:
-                     </strong> </span>
+                     </strong> 
                      {' '}{cart.paymentMethod}
                   </ListGroup.Item>
                   <ListGroup.Item>
