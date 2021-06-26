@@ -58,6 +58,7 @@ export const Register = ( {history, location} ) => {
                 <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control type="text" 
+                        placeholder='Ingresa tu nombre'
                         onChange={(e) => {
                             setName(e.target.value);
                             setError('');
@@ -65,8 +66,9 @@ export const Register = ( {history, location} ) => {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Apellido</Form.Label>
+                    <Form.Label>Apellidos</Form.Label>
                     <Form.Control type="text" 
+                        placeholder='Ingresa tus apellidos'
                         onChange={(e) => {
                             setLastName(e.target.value);
                             setError('');
@@ -76,6 +78,7 @@ export const Register = ( {history, location} ) => {
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Correo Electrónico</Form.Label>
                     <Form.Control type="email"
+                        placeholder='Ingresa tu correo electrónico'
                         onChange={(e) => {
                             setEmail(e.target.value);
                             setError('');
@@ -85,6 +88,7 @@ export const Register = ( {history, location} ) => {
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control type="password" 
+                        placeholder='Ingresa tu contraseña'
                         onChange={(e) => {
                             setPassword(e.target.value);
                             setError('');
