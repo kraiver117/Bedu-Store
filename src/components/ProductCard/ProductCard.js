@@ -18,7 +18,10 @@ export const ProductCard = ({ product }) => {
                 <Card.Title as='h5'>
                     <strong>{product.name}</strong>
                 </Card.Title>
-                <Rating value={product.rating} display='block' />
+                <div className='d-flex'>
+                    <Rating value={product.rating} display='block' />
+                    <p className='text-muted p-0 m-0 ml-1'>{`(${product.rating.toFixed(1)})`}</p>
+                </div>
                 <Card.Text className='orange-color font-weight-bold' style={{margin: '5px 0px', fontSize: 17}}>
                     ${product.price}
                 </Card.Text>

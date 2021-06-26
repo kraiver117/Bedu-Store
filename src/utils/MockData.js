@@ -8,7 +8,7 @@ const products = [
         price: 99.99,
         countInStock: 10,
         rating: 4.5,
-        numReviews: 12,
+        numReviews: 1,
     },
     {
         _id: '5faf866af74d3104bc3ce128',
@@ -19,7 +19,7 @@ const products = [
         price: 230.99,
         countInStock: 10,
         rating: 4.5,
-        numReviews: 12,
+        numReviews: 5,
     },
     {
         _id: '5faf866af74d3104bc3ce126',
@@ -30,7 +30,7 @@ const products = [
         price: 120.99,
         countInStock: 10,
         rating: 4.5,
-        numReviews: 12,
+        numReviews: 5,
     },
     {
         _id: '5faf866af74d3104bc3ce135',
@@ -41,7 +41,7 @@ const products = [
         price: 299.99,
         countInStock: 10,
         rating: 4.5,
-        numReviews: 12,
+        numReviews: 7,
     },
 ]
 
