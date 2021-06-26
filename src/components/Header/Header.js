@@ -77,10 +77,10 @@ export const Header = () => {
                     { 
                         !userInfo 
                         ? <div className="d-flex align-items-center">
-                            <NavLink activeClassName='border-bottom-orange' to='/login' acti className="pr-2 border-right text-dark font-weight-bolder my-2 my-lg-0">
+                            <NavLink activeClassName='border-bottom-orange' to='/login' acti className="text-decoration-none pr-2 border-right text-dark font-weight-bolder my-2 my-lg-0">
                                 Iniciar sesión
                             </NavLink>
-                            <NavLink activeClassName='border-bottom-orange' to='/register' className="pl-2 text-dark font-weight-bolder my-2 my-lg-0">
+                            <NavLink activeClassName='border-bottom-orange' to='/register' className="text-decoration-none pl-2 text-dark font-weight-bolder my-2 my-lg-0">
                                 Registrarse
                             </NavLink>
                         </div>
@@ -172,7 +172,7 @@ export const Header = () => {
                         {
                             categories.map((categoryProduct, index) => (
                                 <div className="text-center font-weight-bolder mx-2" key={index}>
-                                    <NavLink activeClassName={categoryProduct === category && 'border-bottom-orange'} to={`/store?category=${categoryProduct}`} className="text-dark">
+                                    <NavLink activeClassName={categoryProduct === category && 'border-bottom-orange'} to={`/store?category=${categoryProduct}`} className="text-dark text-decoration-none">
                                         {categoryProduct}   
                                     </NavLink>
                                 </div>
