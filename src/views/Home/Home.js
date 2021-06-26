@@ -11,9 +11,9 @@ export const Home = () => {
     return (
         <>
             { width >= 800 && <MainCarousel /> }
-            <CardsCarousel title='Productos más comprados' />
+            <CardsCarousel title='PRODUCTOS MÁS COMPRADOS' />
             <SocialMedia />
-            <CardsCarousel title='Nuestros Productos' />
+            <CardsCarousel title='NUESTROS PRODUCTOS' />
         </>
     )
 }
