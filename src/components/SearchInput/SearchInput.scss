@@ -42,3 +42,25 @@
     background-color: 'red';
 
 }
+
+.search-input {
+    border: 1px solid #a6a2a2 !important;
+    border-right: none !important;
+}
+ 
+.search-button-2 {
+   border: 1px solid #a6a2a2 !important;
+   border-left: none !important;
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+}
+
+.form-search {
+    width: 100% !important;
+}
+ 
+@media (min-width: 992px) { 
+    .form-search {
+        width: 72% !important;
+    }
+}
