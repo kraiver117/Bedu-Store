@@ -26,6 +26,10 @@
    margin-right: 1rem;
  }
 
+ .navbar-background-color {
+  background-color: #F4F4F4;
+ }
+
  .p-navbar {
    padding: 8px 24px;
  }
@@ -33,15 +37,34 @@
  .w-80 {
    width: 80% !important;
  }
+
+ .search-container {
+   width: 80% !important;
+   
+ }
+
  .products-category {
    width: 100%;
+ }
+
+ @media (max-width: 768px) {
+   .search-container {
+     width: 100% !important;
+   }
  }
 
   @media (min-width: 768px) { 
     .p-navbar {
       padding: 8px 100px;
     }
+  }
+
+  @media (max-width: 768px) { 
+    .p-navbar {
+      padding: 8px 10px;
+    }
   } 
+
   @media (min-width: 991px) { 
     .products-category {
       width: 25%;
