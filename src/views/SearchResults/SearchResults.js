@@ -22,6 +22,7 @@ export const SearchResults = ({ match, history }) => {
 
     return (
         <Container className='my-4'>
+             { (keyword && products.length !== 0) && <h3 className='text-center'>Coincidencias con "{keyword}" </h3>}
             <Row className='justify-content-center my-4'>
                 { loading ? <Loader /> : products.length === 0 ? <Message variant='danger'>{`No se encontraron coincidencias con "${keyword}"`}</Message> : 
                     products.map((product, index) => (
