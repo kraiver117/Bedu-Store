@@ -8,7 +8,7 @@ export const SocialMedia = () => {
         <Container className='pt-5'>
             <Row className='d-flex justify-content-center'>
                 <Col sm={12} md={5} className='socialMediaContainer d-flex flex-column justify-content-center align-items-center mb-5'>
-                    <h4 className='text-white pb-4'>VISITA NUESTRA PÁGINA OFICIAL</h4>
+                    <h4 className='text-white text-center pb-4'>VISITA NUESTRA PÁGINA OFICIAL</h4>
                     <a href="https://bedu.org/" target="_blank" rel="noreferrer">
                         <img className='beduLogo' src={BeduLogo} alt="Bedu Logo Small"/>
                     </a>
