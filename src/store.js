@@ -23,6 +23,7 @@ import {
 import {
     productListReducer,
     productListWithQueryReducer,
+    listRandomProductsReducer,
     productDetailsReducer,
     productCreateReducer,
     productReviewCreateReducer,
@@ -51,6 +52,7 @@ const reducer = combineReducers({
     searchProducts: searchProductsReducer,
     productsList: productListReducer,
     productsListWithQuery: productListWithQueryReducer,
+    listRandomProducts: listRandomProductsReducer,
     productDetails: productDetailsReducer,
     productCreate: productCreateReducer,
     productReviewCreate: productReviewCreateReducer,

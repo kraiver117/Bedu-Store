@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { ProductCard } from '../ProductCard/ProductCard';
-import products from '../../utils/MockData';
+import { Loader } from '../Loader/Loader';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CardsCarousel.scss';
+import { listRandomProducts } from '../../actions/productActions';
 
 export const CardsCarousel = ({ title }) => {
     const { width } = useWindowDimensions();
+    const dispatch = useDispatch();
+
+    const randomProducts = useSelector(state => state.listRandomProducts);
+    const { loading, products } = randomProducts;
+
+    useEffect(() => {
+        dispatch(listRandomProducts());
+    }, [dispatch]);
 
     const settings = {
         className: "center",
@@ -51,14 +61,17 @@ export const CardsCarousel = ({ title }) => {
     
     return (
         <Container className='carousel-container my-5'>
-                {title  && <h3 className="text-center">{ title }</h3>}
-                <Slider {...settings}>
-                    {
-                        products.map( (product, index) => (
-                                <ProductCard key={index} product={product} />
-                        ))
-                    }                 
-                </Slider>
+                {loading ? <Loader /> : <>
+                    {title  && <h3 className="text-center">{ title }</h3>}
+                    <Slider {...settings}>
+                        {
+                            products.map( (product, index) => (
+                                    <ProductCard key={index} product={product} />
+                            ))
+                        }                 
+                    </Slider>
+                    </>
+                }
         </Container>
     )
 }

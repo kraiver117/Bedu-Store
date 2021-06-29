@@ -23,7 +23,10 @@ import {
     PRODUCT_SEARCH_FAIL,
     PRODUCT_CREATE_REVIEW_REQUEST,
     PRODUCT_CREATE_REVIEW_SUCCESS,
-    PRODUCT_CREATE_REVIEW_FAIL
+    PRODUCT_CREATE_REVIEW_FAIL,
+    PRODUCT_GET_RANDOM_ITEMS_REQUEST,
+    PRODUCT_GET_RANDOM_ITEMS_SUCCESS,
+    PRODUCT_GET_RANDOM_ITEMS_FAIL
 } from '../constants/productConstants';
 
 export const listProducts = () => async (dispatch) => {
@@ -94,6 +97,29 @@ export const listProductsWithQuery = (category = '', page = '', limit = '') => a
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_WITH_QUERY_FAIL,
+            payload: error.response && error.response.data.error
+                ? error.response.data.error
+                : error.message
+        });
+    }
+}
+
+export const listRandomProducts = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: PRODUCT_GET_RANDOM_ITEMS_REQUEST
+        });
+
+        const { data } = await beduStoreAPI.get(`/products/random`);
+
+        dispatch({
+            type: PRODUCT_GET_RANDOM_ITEMS_SUCCESS,
+            payload: data
+        });
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_GET_RANDOM_ITEMS_FAIL,
             payload: error.response && error.response.data.error
                 ? error.response.data.error
                 : error.message
