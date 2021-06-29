@@ -28,6 +28,9 @@ import {
     PRODUCT_CREATE_REVIEW_SUCCESS,
     PRODUCT_CREATE_REVIEW_FAIL,
     PRODUCT_CREATE_REVIEW_RESET,
+    PRODUCT_GET_RANDOM_ITEMS_REQUEST,
+    PRODUCT_GET_RANDOM_ITEMS_SUCCESS,
+    PRODUCT_GET_RANDOM_ITEMS_FAIL,
 } from '../constants/productConstants';
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -111,12 +114,35 @@ export const searchProductsReducer = (state = { products: [] }, action) => {
     }
 }
 
+export const listRandomProductsReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_GET_RANDOM_ITEMS_REQUEST:
+            return {
+                loading: true
+            }
+
+        case PRODUCT_GET_RANDOM_ITEMS_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload
+            }
+
+        case PRODUCT_GET_RANDOM_ITEMS_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        default:
+            return state;
+    }
+}
+
 export const productDetailsReducer = (state = { product: {} }, action) => {
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
             return {
                 loading: true,
-                ...state
             }
 
         case PRODUCT_DETAILS_SUCCESS:
